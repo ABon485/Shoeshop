@@ -1,0 +1,27 @@
+.resource_page--footerContainer {
+  max-width: 1216px;
+  margin: 48px auto 0;
+}
+
+.footer {
+  margin-top: 10px;
+  background-color: rgb(115, 154, 154);
+}
+
+.col-6 {}
+
+h6 {
+  color: burlywood;
+}
+
+.list a {
+  list-style: none;
+  text-decoration: none;
+  color: black;
+}
+
+i {}
+
+.input {}
+
+input {}
