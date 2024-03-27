@@ -1,6 +1,9 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use  App\Http\Controllers\ManageProductController;
+use  App\Http\Controllers\ManageOrderController;
+use  App\Http\Controllers\ManageUserController;
 
 /*
 |--------------------------------------------------------------------------
@@ -15,4 +18,12 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('home');
+});
+//=================Route Admin====================
+Route::group(['admin' => 'Admin'], function () {
+    Route::resource('product', ManageProductController::class);
+
+    Route::resource('order', ManageOrderController::class);
+
+    Route::resource('user', ManageUserController::class);
 });
