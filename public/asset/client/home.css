@@ -1,0 +1,62 @@
+#mySwiper{
+    display: flex;
+}
+
+
+.swiper-wrapper{
+    display: flex;
+    height: 200px;
+    width: 200px;
+}
+h4{
+    display: flex;
+    padding-top: 40px;
+    padding-left: 60px;;
+}
+
+.images{
+    display: flex;
+    justify-content: space-around; 
+    align-items: center; 
+}
+.images>img {
+  width: 15%;
+  aspect-ratio: 4/3;
+  object-fit: contain;
+}
+.text-center{
+    padding-top: 50px;
+}
+.paragrap{
+    padding-left: 40px;
+}
+.paragrap p{
+    color: gray;
+}
+.paragrap b{
+    color: rgb(14, 14, 14);
+}
+.swiper-slide{
+    padding-left: 50px;
+}
+.swiper-slide img{
+    max-width: 100%;
+    height: 200px;
+}
+.col-6 {
+    -ms-flex: 0 0 50%;
+    flex: 0 0 50%;
+    max-width: 50%;
+}
+.card_body a:hover{
+    color: #000; 
+    transition: color 0.5s ease; 
+}
+.swiper-slide :hover{
+    cursor: pointer;
+    transition: color 0.5s ease; 
+}
+
+
+
+
