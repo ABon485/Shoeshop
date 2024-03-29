@@ -1,9 +1,10 @@
 <?php
 
 namespace Database\Seeders;
-
+use Database\Factories\ProductFactory;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\DB;
 
 class DatabaseSeeder extends Seeder
 {
@@ -20,5 +21,9 @@ class DatabaseSeeder extends Seeder
         //     'name' => 'Test User',
         //     'email' => 'test@example.com',
         // ]);
+            $product = new ProductFactory();
+            for ($i=0; $i< 15; $i++){
+                DB::table('Shoe')->insert($product->definition());
+            }
     }
 }
