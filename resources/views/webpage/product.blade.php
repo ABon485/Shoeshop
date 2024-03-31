@@ -5,18 +5,18 @@
         <div class="untree_co-section product-section before-footer-section mt-5">
             <h2>Shoes</h2>
             <div class="tab">
-                <button class="tablinks btn-success" onclick="openTabs(event,'tab_21')">Men</button>
-                <button class="tablinks btn-success" onclick="openTabs(event,'tab_19')">Women</button>
+                <a class="tablinks " onclick="openTabs(event,'tab_21')"><b>Men</b></a>
+                <a class="tablinks " onclick="openTabs(event,'tab_19')"><b>Women</b></a>
             </div>
             <div class="container">
                 <div class="row list-product" id="tab_21">
                     @foreach ($products as $product)
                     @if ($product->category == "Men")
                     <div class="col-4 col-md-4 col-lg-3 mb-5">
-                        <a class="product-item text-decoration-none" href="{{ asset('detail?id=' . $product->id) }}">
+                        <a class="product-item text-decoration-none" href="{{ route('Detailproduct', ['id' => $product->id]) }}">
                             <img src="{{ asset('images/' . $product->image) }}" class="img-fluid product-thumbnail">
                             <h3 class="product-title">{{ $product->name }}</h3>
-                            <strong class="product-price">${{ $product->price }}</strong>
+                            <strong class="product-price">{{ $product->price }}</strong>
                         </a>
                     </div>
                     @endif
@@ -27,10 +27,10 @@
                     @foreach ($products as $product) 
                     @if ($product->category == "Women")
                     <div class="col-4 col-md-4 col-lg-3 mb-5">
-                        <a class="product-item text-decoration-none" href="{{ asset('detail?id=' . $product->id) }}">
+                        <a class="product-item text-decoration-none" href="{{ route('Detailproduct', ['id' => $product->id]) }}">
                             <img src="{{ asset('images/' . $product->image) }}" class="img-fluid product-thumbnail">
                             <h3 class="product-title">{{ $product->name }}</h3>
-                            <strong class="product-price">${{ $product->price }}</strong>
+                            <strong class="product-price">{{ $product->price }}</strong>
                         </a>
                     </div>
                     @endif
