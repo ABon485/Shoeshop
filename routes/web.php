@@ -5,6 +5,14 @@ use Illuminate\Support\Facades\Route;
 
 
 
+use  App\Http\Controllers\ManageProductController;
+use  App\Http\Controllers\ManageOrderController;
+use  App\Http\Controllers\ManageUserController;
+
+use  App\Http\Controllers\ProductController;
+
+
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -17,8 +25,18 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('home');
+    return view('webpage.home');
 });
+
+//=================Route Admin====================
+Route::group(['admin' => 'Admin'], function () {
+    Route::resource('product', ManageProductController::class);
+
+    Route::resource('order', ManageOrderController::class);
+
+    Route::resource('user', ManageUserController::class);
+});
+
 Route::get('/login', [AuthController::class,'login'])->name('login');
 Route::post('/login', [AuthController::class,'postLogin']);
 
@@ -29,5 +47,12 @@ Route::post('/register', [AuthController::class,'postRegister']);
 Route::get('/logout', [AuthController::class,'logout'])->name('logout');
 
 
+
+
+// Route::get('/product', function () {
+//     return view('webpage.product');
+// });
+
+Route::get('/product',[ProductController::class,'index']);
 
 
