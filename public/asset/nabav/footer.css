@@ -8,8 +8,6 @@
   background-color: rgb(115, 154, 154);
 }
 
-.col-6 {}
-
 h6 {
   color: burlywood;
 }
@@ -19,9 +17,3 @@ h6 {
   text-decoration: none;
   color: black;
 }
-
-i {}
-
-.input {}
-
-input {}
