@@ -13,17 +13,21 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('personal_access_tokens', function (Blueprint $table) {
-            $table->id();
-            $table->morphs('tokenable');
-            $table->string('name');
-            $table->string('token', 64)->unique();
-            $table->text('abilities')->nullable();
-            $table->timestamp('last_used_at')->nullable();
-            $table->timestamp('expires_at')->nullable();
-            $table->timestamps();
+        Schema::create('Shoe', function (Blueprint $table) { 
+            $table->increments('id'); 
+            $table->string('description');
+            $table->string('image');
+            $table->string('name'); 
+            $table->decimal('price', 8, 2); 
+            $table->integer('size')->unsigned(); 
+            $table->integer('quantity')->unsigned(); 
+            $table->string('category'); 
+            $table->timestamps(); 
+            // Nếu 'category' là foreign key liên kết với bảng categories, bạn có thể thêm:
+            // $table->foreign('category')->references('id')->on('categories');
         });
     }
+    
 
     /**
      * Reverse the migrations.
@@ -32,6 +36,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('personal_access_tokens');
+        Schema::dropIfExists('product');
     }
 };
