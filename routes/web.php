@@ -45,9 +45,8 @@ Route::get('/register', [AuthController::class,'register'])->name('register');
 Route::post('/register', [AuthController::class,'postRegister']);
 
 Route::post('/logout', [AuthController::class,'logout'])->name('logout');
-Route::prefix('/admin',)->middleware('admin')->group(function(){
+Route::post('/AdminLogin', [AuthController::class,'AdminLogin'])->name('AdminLogin');
 
-});
 
 
 

@@ -6,34 +6,64 @@ use Illuminate\Http\Request;
 use App\Models\User;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Validator;
+
+
 class AuthController extends Controller
 {
-    function login(){
+    function login()
+    {
         return view('auth.login');
     }
-    function register(){
+    function register()
+    {
         return view('auth.register');
     }
-    function postRegister(Request $request){
-        $request->merge(['password'=>Hash::make($request->password)]);
-        try{
-            User::create($request->all());
-        }catch(\throwable $th){
-            dd($th);
-        }
-        return redirect()->route('login');
-    }
-    function postLogin(Request $request){    
-        if(Auth::attempt(['email'=>$request->email,'password' => $request->password])){
-            return view('home');
+
+
+    public function postRegister(Request $request)
+    {
+        // Validate the input
+        $request->validate([
+            'name' => 'required|string|max:255',
+            'email' => 'required|string|email|max:255|unique:users',
+            'password' => 'required|string|min:8|confirmed',
+        ], [
+            'name.required' => 'Please enter your full name.',
+            'email.required' => 'Please enter your email address.',
+            'email.email' => 'Please enter a valid email address.',
+            'email.unique' => 'This email address is already registered.',
+            'password.required' => 'Please enter a password.',
+            'password.min' => 'Password must be at least 8 characters long.',
+            'password.confirmed' => 'Password confirmation does not match.',
+        ]);
+
+        // If validation passes, create new user
+        try {
+            User::create([
+                'name' => $request->name,
+                'email' => $request->email,
+                'password' => Hash::make($request->password),
+            ]);
+        } catch (\Throwable) {
+            // Handle exception if necessary
         }
 
-        return redirect()->back()->with('error','sai can nhap lai');
+        return redirect()->route('login');
     }
-    function logout(Request $request){    
+
+    function postLogin(Request $request)
+    {
+        if (Auth::attempt(['email' => $request->email, 'password' => $request->password])) {
+            return view('webpage.home');
+        }
+
+        return redirect()->back()->with('error', 'sai can nhap lai');
+    }
+    function logout(Request $request)
+    {
 
         Auth::logout();
         return redirect()->back();
     }
-    //
 }
