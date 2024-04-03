@@ -1,0 +1,25 @@
+.container {
+    display: flex;
+    justify-content: center; /* căn giữa theo chiều ngang */
+    margin-top: 50px;
+}   
+
+form {
+    width: 80%; /* chiều rộng của form */
+    max-width: 400px; /* chiều rộng tối đa */
+    border: 1px solid rgb(115, 154, 154); /* viền */
+    border-radius: 8px; /* bo tròn */
+    padding: 20px; /* khoảng  cách bên trong form */
+}
+
+.btn-primary {
+    width: 50%; 
+    margin-left: 90px;
+    
+}
+button[type="submit"] {
+
+    background-color: rgb(115, 154, 154); /* màu đỏ */
+    border-radius: 15px; /* Bo góc cho nút */
+}
+
