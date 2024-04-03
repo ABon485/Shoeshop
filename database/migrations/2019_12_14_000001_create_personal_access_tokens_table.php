@@ -23,8 +23,6 @@ return new class extends Migration
             $table->integer('quantity')->unsigned(); 
             $table->string('category'); 
             $table->timestamps(); 
-            // Nếu 'category' là foreign key liên kết với bảng categories, bạn có thể thêm:
-            // $table->foreign('category')->references('id')->on('categories');
         });
     }
     

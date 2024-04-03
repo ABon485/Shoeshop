@@ -1,7 +1,7 @@
 .img_shoes {
-    width: 100% ;
-    max-width: 900px ;
-    height: auto  ;
+    width: 600px!important;
+    height: 550px!important;
+    
 }
  a{
     list-style: none;

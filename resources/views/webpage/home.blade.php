@@ -1,5 +1,23 @@
 @extends('nabav.layout')
 @section('content')
+    <div class="container title mt-5">
+        <div class="row">
+            <div class="col-6 mt-5">
+                <div class="title_paragraph mt-5">
+                    <h1>Air Nike 1 Hi FlyEase</h1>
+                    <p>These are the best shoes ever madafaka buy these or I will come to your house, so you better be
+                        buying it ok. <br>
+                        Hope you like it.</p>
+                    <button class="btn btn-success">Buy now</button>
+                </div>
+            </div>
+            <div class="col-6">
+                <div class="img">
+                    <img class="img_shoes" src="{{ asset('/images/Aire Jordan Nike.png') }}" alt="">
+                </div>
+            </div>
+        </div>
+    </div>
     <div class="logo_images">
         <h4>Brands</h4>
         <div class="images container row" id="image">
@@ -18,17 +36,27 @@
             <!-- Slider1 -->
             <div id="mySwiper" class="pb-1">
                 <div class="col-6 m-lg-4 d-flex">
-                    <div class="col-6">
-                        <div class="card" style="width: 18rem; height:15rem">
-                            <img src="https://images.squarespace-cdn.com/content/v1/5cd2555994d71a16b3b6ffc1/1625706431299-2H8HKAY9Q9Y1K93CEW1B/unsplash-image-1zBPoVwS_Jo.jpg?format=1500w"
-                                class="card-img-top" alt="Shoe Image">
-                            <div class="card_body mt-3 ml-3">
-                                <a class="text-decoration-none" href="">View all</a>
+                    @php $count = 0; @endphp
+                    @foreach ($products as $product)
+                        @if ($count < 4)
+                            <div class="col-6">
+                                <div class="card" style="width: 18rem;">
+                                    <a class="product-item text-decoration-none"
+                                        href="{{ route('Detailproduct', ['id' => $product->id]) }}">
+                                        <img src="{{ asset('images/' . $product->image) }}"
+                                            class="card-img-top img-fluid product-thumbnail">
+                                        <div class="card-body mt-3 ml-3">
+                                            <a class="text-decoration-none"
+                                                href="{{ route('Detailproduct', ['id' => $product->id]) }}">View all</a>
+                                        </div>
+                                    </a>
+                                </div>
                             </div>
-                        </div>
-                    </div>
+                            @php $count++; @endphp
+                        @endif
+                    @endforeach
 
-                    <div class="col-6">
+                    {{-- <div class="col-6">
                         <div class="card" style="width: 18rem; height:15rem">
                             <img src="https://images.unsplash.com/photo-1612902377756-414b2139d5e2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwcm9maWxlLXBhZ2V8Nnx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=60"
                                 class="card-img-top" alt="Shoe Image">
@@ -56,7 +84,7 @@
                                 <a class="text-decoration-none" href="">View all</a>
                             </div>
                         </div>
-                    </div>
+                    </div> --}}
                 </div>
             </div>
         </div>
