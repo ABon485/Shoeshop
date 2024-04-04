@@ -30,14 +30,17 @@
 
 <body>
 
-    <div class="container ">
-        <div class="navbar row">
-            <div class="img col-3">
-                <img class="mt-5" src="{{ asset('/images/Group 550.png') }}" alt="">
+    <div class="bon">
+        <div class="navbar ">
+            <div class="">
+                <img class="" src="{{ asset('/images/Group 550.png') }}" alt="">
             </div>
             <div class="search col-3">
-                <input class="btn " type="text" name="search" placeholder="Search..">
-            </div>
+                <div class="input">
+                  <input class="" style="" type="text" name="search" placeholder="Search..">
+                  <i class="fa fa-search" aria-hidden="true"></i>
+                </div>
+              </div>
             <div class="title_menu">
                 <a class="p-3" href="{{route('home')}}">Home</a>
                 <a class="p-3" href="{{route('product')}}">Product</a>
@@ -55,8 +58,6 @@
                     <a class="btn btn-success btn-icon" href="{{ route('register') }}">Register</a>
                 @endif
             </div>
-
-
 
         </div>
     </div>

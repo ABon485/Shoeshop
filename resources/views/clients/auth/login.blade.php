@@ -1,4 +1,4 @@
-@extends('nabav.layout')
+@extends('clients.nabav.layout')
 @section('content')
 
 

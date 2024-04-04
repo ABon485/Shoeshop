@@ -1,4 +1,4 @@
-@extends('nabav.layout')
+@extends('clients.nabav.layout')
 @section('content')
     <div class="body-content outer-top-xs">
         <div class='container'>

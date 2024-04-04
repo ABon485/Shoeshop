@@ -1,4 +1,4 @@
-@extends('nabav.layout')
+@extends('clients.nabav.layout')
 @section('content')
     <div class="container title mt-5">
         <div class="row">

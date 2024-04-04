@@ -1,12 +1,12 @@
 
 <header>
-    @include('nabav.headed')
+    @include('clients.nabav.headed')
 </header>
 
 @yield('content')
 
 
 <footer>
-    @include('nabav.footer')
+    @include('clients.nabav.footer')
 </footer>
 @yield('css')

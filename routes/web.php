@@ -24,9 +24,7 @@ use  App\Http\Controllers\ProductController;
 |
 */
 
-// Route::get('/', function () {
-//     return view('webpage.home');
-// });
+
 
 //=================Route Admin====================
 Route::group(['admin' => 'Admin'], function () {
@@ -49,15 +47,6 @@ Route::post('/AdminLogin', [AuthController::class,'AdminLogin'])->name('AdminLog
 
 
 
-
-
-
-// Route::get('/product', function () {
-//     return view('webpage.product');
-// });
-// Route::get('/product', function () {
-    //     return view('webpage.product');
-    // });
 Route::get('/',[ProductController::class,'index'])->name('home');
 
 Route::get('/product',[ProductController::class,'getproduct'])->name('product');

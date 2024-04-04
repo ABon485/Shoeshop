@@ -9,122 +9,124 @@ class ProductController extends Controller
 {
     function index(){
         $products = product::all();
-        return view('webpage.home',compact('products'));
+        return view('clients.webpage.home',compact('products'));
     }
     public function getproduct(){
         
         $products = product::all();
         // $this->data['title'] = 'sản phẩm';
-        return view('webpage.product',compact('products'));
+        return view('clients.webpage.product',compact('products'));
     }
     public function Detailproduct($id){
         $product = DB::table('shoe')->where('id', $id)->first();
-        return view('webpage.detail', compact('product'));
+        return view('clients.webpage.detail', compact('product'));
     }
-
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
-    {
-        //
-        // $mfList = Mf::all();
-        // return view('product-create',compact('mfList'));
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     */
-    public function store(Request $request)
-    {
-        $validatedData = $request->validate([
-            'Name' => 'required|max:255|unique:products,Name',
-            'description' => 'required|max:255',
-            'Price' => 'required|decimal',
-            'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
-        ]);
-        
-        //
-        $product = new product();
-
-        $product->Name = $request->Name;
-        $product->description = $request->description;
-        $product->Price = $request->Price;
-
-        $file = $request->file('image');
-            $name =time().'_'.$file->getClientOriginalName();
-            $destinationPath= public_path('images'); // lưu hình ảnh vào thư mục public
-            $file->move($destinationPath,$name);
-            $product->image=$name;
-            $product->save();
-            session()->flash('success', 'Thêm xe thành công!');
-        return redirect()->route('product.store');
-    }
-
-    /**
-     * Display the specified resource.
-     */
     public function show($id)
     {
         $product = Product::find($id);
         // Các xử lý khác với biến $product
-        return view('webpage.detail', compact('product'));
+        return view('clients.webpage.detail', compact('product'));
     }
+}
+
+    /**
+     * Show the form for creating a new resource.
+     */
+    // public function create()
+    // {
+    //     //
+    //     // $mfList = Mf::all();
+    //     // return view('product-create',compact('mfList'));
+    // }
+
+    /**
+     * Store a newly created resource in storage.
+     */
+    // public function store(Request $request)
+    // {
+    //     $validatedData = $request->validate([
+    //         'Name' => 'required|max:255|unique:products,Name',
+    //         'description' => 'required|max:255',
+    //         'Price' => 'required|decimal',
+    //         'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+    //     ]);
+        
+    //     //
+    //     $product = new product();
+
+    //     $product->Name = $request->Name;
+    //     $product->description = $request->description;
+    //     $product->Price = $request->Price;
+
+    //     $file = $request->file('image');
+    //         $name =time().'_'.$file->getClientOriginalName();
+    //         $destinationPath= public_path('images'); // lưu hình ảnh vào thư mục public
+    //         $file->move($destinationPath,$name);
+    //         $product->image=$name;
+    //         $product->save();
+    //         session()->flash('success', 'Thêm xe thành công!');
+    //     return redirect()->route('product.store');
+    // }
+
+    /**
+     * Display the specified resource.
+     */
+   
 
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Request  $request, string $id){
-        if(isset($request->image)){
-            return $this->update($request, $id);
-        }
+//     public function edit(Request  $request, string $id){
+//         if(isset($request->image)){
+//             return $this->update($request, $id);
+//         }
 
-        $product = product::find($id);
-        return view('product-update', compact('product'));
-    }
+//         $product = product::find($id);
+//         return view('product-update', compact('product'));
+//     }
 
-   /**
- * Update the specified resource in storage.
- */
-/**
- * Update the specified resource in storage.
- */
-public function update(Request $request, string $id)
-{
-    $product = product::find($id);
+//    /**
+//  * Update the specified resource in storage.
+//  */
+// /**
+//  * Update the specified resource in storage.
+//  */
+// public function update(Request $request, string $id)
+// {
+//     $product = product::find($id);
     
-    $product->Name = $request->input('Name');
-    $product->description = $request->input('description');
-    $product->Price = $request->input('Price');
+//     $product->Name = $request->input('Name');
+//     $product->description = $request->input('description');
+//     $product->Price = $request->input('Price');
 
 
-    if ($request->hasFile('image')) {
-        $file = $request->file('image');
+//     if ($request->hasFile('image')) {
+//         $file = $request->file('image');
 
-        if ($file->isValid()) {
-            $name = time() . '_' . $file->getClientOriginalName();
-            $destinationPath = public_path('images');
-            $file->move($destinationPath, $name);
-            $product->image = $name;
-        } else {
-            return redirect()->back()->with('error', 'Invalid file upload.');
-        }
-    }
+//         if ($file->isValid()) {
+//             $name = time() . '_' . $file->getClientOriginalName();
+//             $destinationPath = public_path('images');
+//             $file->move($destinationPath, $name);
+//             $product->image = $name;
+//         } else {
+//             return redirect()->back()->with('error', 'Invalid file upload.');
+//         }
+//     }
 
-    $product->save();
+//     $product->save();
 
-    return redirect()->route('product.store')
-        ->with('success', 'Cập nhật thông tin san pham thành công.');
-}
+//     return redirect()->route('product.store')
+//         ->with('success', 'Cập nhật thông tin san pham thành công.');
+// }
 
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(string $id)
-    {
-        //
-        $product = product::find($id);
-        $product->delete();
-        return redirect()->route('product.store');
-    }
-}
+//     /**
+//      * Remove the specified resource from storage.
+//      */
+//     public function destroy(string $id)
+//     {
+//         //
+//         $product = product::find($id);
+//         $product->delete();
+//         return redirect()->route('product.store');
+//     }
+// }
