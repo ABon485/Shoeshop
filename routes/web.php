@@ -69,6 +69,6 @@ Route::get('/detail/{id}',[ProductController::class,'Detailproduct'])->name('Det
 // Checkout 
 Route::get('payUrl',function(){
     return view('webpage.testMomo');
-});
+})-> name('checkout-momo');
 
 Route::post('/payUrl', [testMomo::class,'payment']);
