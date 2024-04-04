@@ -19,6 +19,7 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
   </head>
 
+
 <body>
 
     <div class="container ">
@@ -29,13 +30,26 @@
             <div class="search col-3">
                 <input class="btn " type="text" name="search" placeholder="Search..">
             </div>
-            <div class="title_menu col-6">
+            <div class="title_menu">
                 <a class="p-3" href="{{route('home')}}">Home</a>
-                <a class="p-3"href="{{route('product')}}">Product</a>
-                <a class="p-3"href="">Contact</a>
-                <a class="pl-3 pr-3  btn btn-secondary "href="">Login</a>
-                <button class="btn btn-primary ">Register</button>
+                <a class="p-3" href="{{route('product')}}">Product</a>
+                <a class="p-3" href="#">Contact</a>
+                @if (Auth::check())
+                    <a class="header-icon header-icon-user" href=""><i class="fa fa-user" aria-hidden="true"></i>{{ Auth::user()->name }}</a>
+                    <a class="btn btn-secondary btn-icon" href="{{ route('logout') }}"
+                        onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                        <i class="fas fa-sign-out-alt"></i> Logout</a>
+                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                        @csrf
+                    </form>
+                @else
+                    <a class="btn btn-danger btn-icon" href="{{ route('login') }}">Login</a>
+                    <a class="btn btn-success btn-icon" href="{{ route('register') }}">Register</a>
+                @endif
             </div>
+
+
+
         </div>
     </div>
     

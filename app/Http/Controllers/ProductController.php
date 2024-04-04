@@ -12,7 +12,7 @@ class ProductController extends Controller
         return view('webpage.home',compact('products'));
     }
     public function getproduct(){
-
+        
         $products = product::all();
         // $this->data['title'] = 'sản phẩm';
         return view('webpage.product',compact('products'));

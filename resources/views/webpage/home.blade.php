@@ -55,36 +55,6 @@
                             @php $count++; @endphp
                         @endif
                     @endforeach
-
-                    {{-- <div class="col-6">
-                        <div class="card" style="width: 18rem; height:15rem">
-                            <img src="https://images.unsplash.com/photo-1612902377756-414b2139d5e2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwcm9maWxlLXBhZ2V8Nnx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=60"
-                                class="card-img-top" alt="Shoe Image">
-                            <div class="card_body mt-3 ml-3">
-                                <a class="text-decoration-none" href="">View all</a>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-6">
-                        <div class="card" style="width: 18rem; height:15rem">
-                            <img src="https://themes.muffingroup.com/betheme/wp-content/uploads/2020/10/betheme-blog-pic1-1200x675.jpg"
-                                class="card-img-top" alt="Shoe Image">
-                            <div class="card_body mt-5 ml-3">
-                                <a class="text-decoration-none" href="">View all</a>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-6">
-                        <div class="card" style="width: 18rem; height:15rem">
-                            <img src="https://uploads.nguoidothi.net.vn/content/e3e83f7c-efe0-4776-a447-6be162a8b957.jpg"
-                                class="card-img-top" alt="Shoe Image">
-                            <div class="card_body mt-3 ml-3">
-                                <a class="text-decoration-none" href="">View all</a>
-                            </div>
-                        </div>
-                    </div> --}}
                 </div>
             </div>
         </div>
