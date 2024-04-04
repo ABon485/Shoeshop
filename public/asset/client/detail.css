@@ -1,0 +1,33 @@
+.img-fluid{
+    height: 300px !important;
+    width: 300px !important;
+}
+.small-images {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    margin-top: 20px;
+    /* Tạo khoảng cách phía trên */
+}
+
+.single-product-gallery-item {
+    margin-bottom: 20px;
+    /* Tạo khoảng cách phía dưới */
+}
+
+.small-image {
+    margin-right: 10px;
+    cursor: pointer;
+    border: 1px solid #ccc;
+    /* Tạo khung bao quanh ảnh */
+    padding: 5px;
+    /* Tạo khoảng cách giữa khung và ảnh */
+}
+
+.small-image:hover {
+    opacity: 0.7;
+}
+.img{
+    width: 100px;
+    height: 200px;
+}

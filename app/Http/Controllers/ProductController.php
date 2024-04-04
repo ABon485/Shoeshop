@@ -3,12 +3,23 @@
 namespace App\Http\Controllers;
 use App\Models\Product;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class ProductController extends Controller
 {
     function index(){
         $products = product::all();
+        return view('webpage.home',compact('products'));
+    }
+    public function getproduct(){
+        
+        $products = product::all();
+        // $this->data['title'] = 'sản phẩm';
         return view('webpage.product',compact('products'));
+    }
+    public function Detailproduct($id){
+        $product = DB::table('shoe')->where('id', $id)->first();
+        return view('webpage.detail', compact('product'));
     }
 
     /**

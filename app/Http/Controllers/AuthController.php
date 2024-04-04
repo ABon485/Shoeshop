@@ -55,7 +55,7 @@ class AuthController extends Controller
     function postLogin(Request $request)
     {
         if (Auth::attempt(['email' => $request->email, 'password' => $request->password])) {
-            return view('webpage.home');
+            return redirect("/");
         }
 
         return redirect()->back()->with('error', 'sai can nhap lai');
@@ -64,6 +64,6 @@ class AuthController extends Controller
     {
 
         Auth::logout();
-        return redirect()->back();
+        return redirect('/');
     }
 }

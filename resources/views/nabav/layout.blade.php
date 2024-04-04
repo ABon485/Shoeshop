@@ -9,3 +9,4 @@
 <footer>
     @include('nabav.footer')
 </footer>
+@yield('css')
