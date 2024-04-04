@@ -1,4 +1,4 @@
-.resource_page--footerContainer {
+/* .resource_page--footerContainer {
   max-width: 1216px;
   margin: 48px auto 0;
 }
@@ -16,4 +16,63 @@ h6 {
   list-style: none;
   text-decoration: none;
   color: black;
+} */
+.resource_page--footerContainer {
+  background-color: #beb7b7;
+  padding: 20px;
+}
+
+.footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.col-4 {
+  flex: 0 0 33.33%;
+  max-width: 33.33%;
+  padding: 10px;
+}
+
+.col-4 h6 {
+  margin-bottom: 10px;
+  font-size: 1rem;
+  font-weight: bold;
+}
+
+.col-4 .list a {
+  color: #333;
+  text-decoration: none;
+  margin-bottom: 5px;
+}
+
+.col-4 .list i {
+  margin-right: 5px;
+}
+
+.col-4 h5 {
+  font-size: 1.2rem;
+  font-weight: bold;
+  margin-top: 20px;
+}
+
+.col-4 span {
+  font-size: 0.8rem;
+  color: #777;
+}
+
+.col-4 .input input {
+  width: 100%;
+  padding: 5px;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+}
+
+.col-4 .input input::placeholder {
+  color: #999;
+}
+
+.col-4 .input input:focus {
+  outline: none;
+  border-color: #555;
 }

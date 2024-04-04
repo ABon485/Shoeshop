@@ -11,7 +11,7 @@
                     <h5>Shoes</h5>
                 <span>© 2024 Shoes, Inc.</span>
                 </div>
-                <div class="co-4">
+                <div class="col-4">
                     <h6>Shoes</h6>
                     <div class="list">
                         <a href="#">Fashion Shoe</a><br>

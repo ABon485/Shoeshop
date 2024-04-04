@@ -7,7 +7,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
     integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <link rel="stylesheet"href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="{{asset('asset/nabav/header.css')}}">
     <link rel="stylesheet" href="{{asset('asset/nabav/footer.css')}}">
     <link rel="stylesheet" href="{{asset('asset/client/home.css')}}">
@@ -22,14 +23,17 @@
 
 <body>
 
-    <div class="container ">
-        <div class="navbar row">
-            <div class="img col-3">
-                <img class="mt-5" src="{{ asset('/images/Group 550.png') }}" alt="">
+    <div class="bon">
+        <div class="navbar ">
+            <div class="">
+                <img class="" src="{{ asset('/images/Group 550.png') }}" alt="">
             </div>
             <div class="search col-3">
-                <input class="btn " type="text" name="search" placeholder="Search..">
-            </div>
+                <div class="input">
+                  <input class="" style="" type="text" name="search" placeholder="Search..">
+                  <i class="fa fa-search" aria-hidden="true"></i>
+                </div>
+              </div>
             <div class="title_menu">
                 <a class="p-3" href="{{route('home')}}">Home</a>
                 <a class="p-3" href="{{route('product')}}">Product</a>
@@ -47,8 +51,6 @@
                     <a class="btn btn-success btn-icon" href="{{ route('register') }}">Register</a>
                 @endif
             </div>
-
-
 
         </div>
     </div>
