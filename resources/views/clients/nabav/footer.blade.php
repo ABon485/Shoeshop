@@ -4,7 +4,7 @@
                 <div class="col-4">
                     <h6>Contact</h6>
                     <div class="list">
-                        <a href="" class=""><i class="m-2 fa fa-location-dot"></i>101B Lê Hữu Trác- Đà Nẵng</a><br>
+                        <a href="" class=""><i class="m-2 fa fa-map-marker" aria-hidden="true"></i>101B Lê Hữu Trác- Đà Nẵng</a><br>
                         <a href="" class=""><i class="m-2 fa fa-phone"></i>0999222444</a><br>
                         <a href="" class=""><i class="m-2 fa fa-envelope"></i>Linh123@gmail.com</a>
                     </div><br>

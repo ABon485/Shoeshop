@@ -28,8 +28,16 @@
                                                 <div class="col-sm-6">
                                                     <div class="price-box">
                                                         Pice: <span class="price text-danger">{{ $product->price }}</span>
-
                                                     </div>
+                                                        Choose Size :
+                                                    <select id="size">
+                                                        <?php
+                                                        $sizes = ['38', '39', '40', '41','42'];
+                                                        foreach ($sizes as $size) {
+                                                            echo '<option value="' . $size . '">' . $size . '</option>';
+                                                        }
+                                                        ?>
+                                                    </select>
                                                 </div>
 
                                             </div><!-- /.row -->
@@ -43,24 +51,29 @@
                                                 </div>
                                                 <div class="col-md-8 mt-5">
                                                     <a href="#" class="btn btn-primary">
-                                                        <i class="fa fa-shopping-cart inner-right-vs"></i> ADD TO CART
+                                                        <svg aria-hidden="true" class="pre-nav-design-icon" focusable="false" viewBox="0 0 24 24" role="img" width="24px" height="24px" fill="none">
+                                                            <path stroke="currentColor" stroke-width="1.5"
+                                                                d="M8.25 8.25V6a2.25 2.25 0 012.25-2.25h3a2.25 2.25 0 110 4.5H3.75v8.25a3.75 3.75 0 003.75 3.75h9a3.75 3.75 0 003.75-3.75V8.25H17.5">
+                                                            </path>
+                                                        </svg>
+                                                         <span class="pre-jewel pre-cart-jewel text-color-primary-dark" style="visibility: visible;"data-var="jewel">ADD TO BAG</span> 
                                                     </a>
                                                 </div>
                                             </div>
                                             
                                         </div><!-- /.quantity-container -->
+                                        <div class="clearfix">
+                                            <div class="description mt-5">
+                                                {{ $product->description }}
+                                            </div><!-- /.description-container -->
+                                        </div>
                                     @endif
                                 </div><!-- /.product-info -->
                             </div><!-- /.col-sm-7 -->
                         </div><!-- /.row -->
                     </div>
                    
-                    <div class="clearfix">
-                        <div class="description-container m-t-20">
-                            <h4>Description</h4>
-                            {{ $product->description }}
-                        </div><!-- /.description-container -->
-                    </div>
+                   
                 </div><!-- /.row -->
             </div>
         </div>
