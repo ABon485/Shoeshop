@@ -19,6 +19,7 @@ return new class extends Migration
             $table->string('image');
             $table->string('name'); 
             $table->decimal('price', 8, 2); 
+            $table->decimal('promotion_price', 8, 2);
             $table->integer('size')->unsigned(); 
             $table->integer('quantity')->unsigned(); 
             $table->string('category'); 

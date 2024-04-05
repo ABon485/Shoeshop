@@ -49,6 +49,7 @@
             </div>
             <div class="search">
                 <div class="input m-4">
+                    <a href=""><i class="fa fa-search" aria-hidden="true"></i></a>
                     <input type="text" id="VisualSearchInput" class="pre-search-input headline-5" name="search" autocomplete="off" data-var="vsInput" tabindex="0" placeholder="Search" aria-label="Search Products" role="combobox" aria-controls="VisualSearchSuggestionsList" aria-owns="VisualSearchSuggestionsList" aria-expanded="false">
                 </div>
                 @if (Auth::check())
