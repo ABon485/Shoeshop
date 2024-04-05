@@ -5,8 +5,8 @@
         <div class="untree_co-section product-section before-footer-section mt-5">
             <h2>Shoes</h2>
             <div class="tab">
-                <a class="tablinks " onclick="openTabs(event,'tab_21')"><b>Men</b></a>
-                <a class="tablinks " onclick="openTabs(event,'tab_19')"><b>Women</b></a>
+                <a class="tablinks " onclick="openTabs(event,'tab_21')"><h4>Men</h4></a>
+                <a class="tablinks " onclick="openTabs(event,'tab_19')"><h4>Women</h4></a>
             </div>
             <div class="container">
                 <div class="row list-product" id="tab_21">

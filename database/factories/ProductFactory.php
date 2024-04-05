@@ -28,10 +28,10 @@ class ProductFactory extends Factory
         'image' => 'product-'.rand(1,15).'.png',
         'Name' => $faker->name, 
         'Price' => $faker->randomFloat(2, 10, 100),
+        'promotion_price'=>$faker->randomFloat(2, 10, 100),
         'size' => $faker->randomElement([36, 38, 40, 42, 44]), 
         'quantity' => $faker->numberBetween(1, 100), 
         'category' => $faker->sentence($nbWords = 2, $variableNbWords = true),
-
     ];
 }
 

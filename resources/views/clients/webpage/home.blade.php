@@ -8,7 +8,6 @@
                     <p>These are the best shoes ever madafaka buy these or I will come to your house, so you better be
                         buying it ok. <br>
                         Hope you like it.</p>
-                    <button class="btn btn-success">Buy now</button>
                 </div>
             </div>
             <div class="col-6">

@@ -45,7 +45,7 @@
                                         <div class="quantity-container info-container">
                                             <div class="row">
                                                 <div class="col-md-4 mt-5">
-                                                    <a href="#" class="btn btn-success">
+                                                    <a href="{{route('checkout-momo')}}" class="btn btn-success">
                                                         Buy now
                                                     </a>
                                                 </div>

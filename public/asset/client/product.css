@@ -4,18 +4,28 @@
  .list-product{
     padding-top: 50px;
  }
+ .tab {
+    display: flex; /* Sử dụng flexbox để các phần tử con nằm chung hàng ngang */
+  }
+  
+  .tablinks {
+    flex: 1; /* Phần tử con dãn ra để chiếm cùng một phần bằng nhau trong hàng ngang */
+    text-align: center; /* Canh giữa nội dung trong phần tử con */
+    border: 1px solid black; /* Thêm đường viền cho phần tử con (tuỳ chọn) */
+    padding: 10px; /* Thêm padding cho phần tử con (tuỳ chọn) */
+  }
  .tablinks{
     margin-left: 350px;
     border: none;
     transition: cubic-bezier(1, 0, 0, 1);
  }
- b{
+ h4{
     color: #000; /* Màu chữ ban đầu */
     text-decoration: none; /* Bỏ gạch chân */
     transition: color 0.1s ease-in-out, text-decoration 0.1s ease-in-out; /* Hiệu ứng chuyển đổi mượt mà */
   }
   
-  b:hover {
+  h4:hover {
     color: #ff0000; /* Màu khi hover, bạn có thể thay đổi màu này */
     text-decoration: underline; /* Thêm gạch chân khi hover */
   }
