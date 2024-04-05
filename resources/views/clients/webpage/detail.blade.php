@@ -27,12 +27,24 @@
                                             <div class="row">
                                                 <div class="col-sm-6">
                                                     <div class="price-box">
-                                                        Pice: <span class="price text-danger">{{ $product->price }}</span>
+                                                        Pice:
+                                                        @if ($product->promotion_price != 0)
+                                                            <span class="flash-del"
+                                                                style="text-decoration: line-through; color: red;">{{ number_format($product->price, 0, '.', ',') }}
+                                                                VND</span>
+                                                            <span
+                                                                class="flash-sale">{{ number_format($product->promotion_price, 0, '.', ',') }}
+                                                                VND</span>
+                                                        @else
+                                                            <span>{{ number_format($product->price, 0, '.', ',') }}
+                                                                VND</span>
+                                                        @endif
+
                                                     </div>
-                                                        Choose Size :
+                                                    Choose Size :
                                                     <select id="size">
                                                         <?php
-                                                        $sizes = ['38', '39', '40', '41','42'];
+                                                        $sizes = ['38', '39', '40', '41', '42'];
                                                         foreach ($sizes as $size) {
                                                             echo '<option value="' . $size . '">' . $size . '</option>';
                                                         }
@@ -45,22 +57,25 @@
                                         <div class="quantity-container info-container">
                                             <div class="row">
                                                 <div class="col-md-4 mt-5">
-                                                    <a href="{{route('checkout-momo')}}" class="btn btn-success">
+                                                    <a href="{{ route('checkout-momo') }}" class="btn btn-success">
                                                         Buy now
                                                     </a>
                                                 </div>
                                                 <div class="col-md-8 mt-5">
                                                     <a href="#" class="btn btn-primary">
-                                                        <svg aria-hidden="true" class="pre-nav-design-icon" focusable="false" viewBox="0 0 24 24" role="img" width="24px" height="24px" fill="none">
+                                                        <svg aria-hidden="true" class="pre-nav-design-icon"
+                                                            focusable="false" viewBox="0 0 24 24" role="img"
+                                                            width="24px" height="24px" fill="none">
                                                             <path stroke="currentColor" stroke-width="1.5"
                                                                 d="M8.25 8.25V6a2.25 2.25 0 012.25-2.25h3a2.25 2.25 0 110 4.5H3.75v8.25a3.75 3.75 0 003.75 3.75h9a3.75 3.75 0 003.75-3.75V8.25H17.5">
                                                             </path>
                                                         </svg>
-                                                         <span class="pre-jewel pre-cart-jewel text-color-primary-dark" style="visibility: visible;"data-var="jewel">ADD TO BAG</span> 
+                                                        <span class="pre-jewel pre-cart-jewel text-color-primary-dark"
+                                                            style="visibility: visible;"data-var="jewel">ADD TO BAG</span>
                                                     </a>
                                                 </div>
                                             </div>
-                                            
+
                                         </div><!-- /.quantity-container -->
                                         <div class="clearfix">
                                             <div class="description mt-5">
@@ -72,17 +87,17 @@
                             </div><!-- /.col-sm-7 -->
                         </div><!-- /.row -->
                     </div>
-                   
-                   
+
+
                 </div><!-- /.row -->
             </div>
         </div>
 
-       
 
-@endsection
 
-@section('js')
+    @endsection
+
+    @section('js')
         <script>
             document.addEventListener('DOMContentLoaded', function() {
                 var smallImages = document.querySelectorAll('.small-image');
@@ -96,4 +111,4 @@
                 });
             });
         </script>
-@endsection
+    @endsection
