@@ -13,11 +13,11 @@ class AuthController extends Controller
 {
     function login()
     {
-        return view('auth.login');
+        return view('clients.auth.login');
     }
     function register()
     {
-        return view('auth.register');
+        return view('clients.auth.register');
     }
 
 
