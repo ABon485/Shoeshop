@@ -45,8 +45,8 @@
                                         <img src="{{ asset('images/' . $product->image) }}"
                                             class="card-img-top img-fluid product-thumbnail">
                                         <div class="card-body mt-3 ml-3">
-                                            <a class="text-decoration-none"
-                                                href="{{ route('Detailproduct', ['id' => $product->id]) }}">View all</a>
+                                            <a class="text-decoration-none" href="{{ route('Detailproduct', ['id' => $product->id]) }}">View all</a>
+                                            <a href=""><i class="fa fa-heart" style="color: red; font-size: 20px; margin-left:150px;" aria-hidden="true"></i></a>
                                         </div>
                                     </a>
                                 </div>

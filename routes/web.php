@@ -12,6 +12,7 @@ use  App\Http\Controllers\ManageUserController;
 use  App\Http\Controllers\ProductController;
 use App\Http\Controllers\testMomo;
 use GuzzleHttp\Psr7\Request;
+use App\Http\Controllers\FavoriteController;
 
 /*
 
@@ -61,3 +62,9 @@ Route::get('payUrl',function(){
 })-> name('checkout-momo');
 
 Route::post('/payUrl', [testMomo::class,'payment']);
+
+
+
+
+    // Hiển thị danh sách sản phẩm yêu thích của người dùng
+Route::post('/favorites', [FavoriteController::class, 'index'])->name('favorites.index');
