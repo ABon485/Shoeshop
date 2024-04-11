@@ -1,0 +1,111 @@
+/* General styling for the cart */
+.beta-comp .cart {
+    position: relative;
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+    padding: 15px;
+    margin-top: 20px;
+}
+
+/* Style for the cart header */
+.beta-comp .beta-select {
+    background-color: #007bff;
+    color: white;
+    padding: 10px 15px;
+    font-size: 18px;
+    cursor: pointer;
+}
+
+.beta-comp .beta-select i {
+    margin-right: 10px;
+}
+
+/* Dropdown arrow rotation */
+.beta-comp .fa-chevron-down {
+    transition: transform 0.2s ease-in-out;
+}
+
+.beta-comp .is-open .fa-chevron-down {
+    transform: rotate(180deg);
+}
+
+/* Styles for the dropdown cart details */
+.beta-comp .cart-body {
+    display: none; /* initially hide the dropdown */
+    position: absolute;
+    width: 100%;
+    background-color: white;
+    box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+    z-index: 1000;
+}
+
+.beta-comp .cart-item {
+    padding: 10px;
+    border-bottom: 1px solid #eee;
+}
+
+.beta-comp .cart-item:last-child {
+    border-bottom: none;
+}
+
+/* Media inside the cart item */
+.beta-comp .media img {
+    width: 64px; /* Adjust based on your needs */
+    height: auto;
+    margin-right: 10px;
+}
+
+.beta-comp .media-body {
+    flex: 1;
+}
+
+/* Styles for item names and quantities */
+.beta-comp .cart-item-title {
+    display: block;
+    font-weight: bold;
+    color: #333;
+}
+
+.beta-comp .cart-item-amount {
+    font-size: 16px;
+    color: #666;
+}
+
+/* Link to remove item from cart */
+.beta-comp .cart-item-delete {
+    float: right;
+    color: #d9534f;
+    cursor: pointer;
+}
+
+.beta-comp .cart-item-delete i {
+    color: inherit;
+}
+
+/* Total price and checkout button container (currently commented out) */
+.beta-comp .cart-caption {
+    padding: 10px;
+    text-align: right;
+    background: #f0f0f0;
+}
+
+.beta-comp .cart-total-value {
+    font-weight: bold;
+}
+
+.beta-comp .beta-btn {
+    background-color: #28a745;
+    color: white;
+    padding: 10px 20px;
+    text-decoration: none;
+    border-radius: 5px;
+    display: inline-block;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .beta-comp .media img {
+        width: 50px;
+    }
+}
+

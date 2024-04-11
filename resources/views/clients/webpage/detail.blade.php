@@ -1,5 +1,10 @@
 @extends('clients.nabav.layout')
 @section('content')
+@if(session('message'))
+    <div class="alert alert-success">
+        {{ session('message') }}
+    </div>
+@endif
     <div class="body-content outer-top-xs">
         <div class='container'>
             <div class='row single-product'>
@@ -50,7 +55,8 @@
                                                     </a>
                                                 </div>
                                                 <div class="col-md-8 mt-5">
-                                                    <a href="#" class="btn btn-primary">
+                                                 
+                                                    <a href="{{ route('post-cart', ['id' => $product->id]) }}" class="btn btn-primary">
                                                         <svg aria-hidden="true" class="pre-nav-design-icon" focusable="false" viewBox="0 0 24 24" role="img" width="24px" height="24px" fill="none">
                                                             <path stroke="currentColor" stroke-width="1.5"
                                                                 d="M8.25 8.25V6a2.25 2.25 0 012.25-2.25h3a2.25 2.25 0 110 4.5H3.75v8.25a3.75 3.75 0 003.75 3.75h9a3.75 3.75 0 003.75-3.75V8.25H17.5">
@@ -58,6 +64,7 @@
                                                         </svg>
                                                          <span class="pre-jewel pre-cart-jewel text-color-primary-dark" style="visibility: visible;"data-var="jewel">ADD TO BAG</span> 
                                                     </a>
+                                                {{-- </form> --}}
                                                 </div>
                                             </div>
                                             

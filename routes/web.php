@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\CartController;
 use Illuminate\Support\Facades\Route;
 
 
@@ -61,3 +62,8 @@ Route::get('payUrl',function(){
 })-> name('checkout-momo');
 
 Route::post('/payUrl', [testMomo::class,'payment']);
+
+//để liên kết với nút hình Giỏ hàng để thêm sản phẩm vào giỏ hàng
+Route::get('/add-to-cart/{id}',[CartController::class,'addToCart'])->name('post-cart');
+
+Route::get('/get-cart',[CartController::class,'getCart'])->name('cart-page');
