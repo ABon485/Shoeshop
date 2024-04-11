@@ -10,10 +10,11 @@ use  App\Http\Controllers\ManageOrderController;
 use  App\Http\Controllers\ManageUserController;
 
 use  App\Http\Controllers\ProductController;
-
-
+use App\Http\Controllers\testMomo;
+use GuzzleHttp\Psr7\Request;
 
 /*
+
 |--------------------------------------------------------------------------
 | Web Routes
 |--------------------------------------------------------------------------
@@ -29,7 +30,7 @@ use  App\Http\Controllers\ProductController;
 // });
 
 //=================Route Admin====================
-Route::group(['admin' => 'Admin'], function () {
+Route::prefix('admin')->group(function(){
     Route::resource('product', ManageProductController::class);
 
     Route::resource('order', ManageOrderController::class);
@@ -63,3 +64,11 @@ Route::get('/',[ProductController::class,'index'])->name('home');
 Route::get('/product',[ProductController::class,'getproduct'])->name('product');
 
 Route::get('/detail/{id}',[ProductController::class,'Detailproduct'])->name('Detailproduct');
+
+
+// Checkout 
+Route::get('payUrl',function(){
+    return view('webpage.testMomo');
+})-> name('checkout-momo');
+
+Route::post('/payUrl', [testMomo::class,'payment']);
