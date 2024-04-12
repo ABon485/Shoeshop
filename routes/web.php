@@ -13,6 +13,8 @@ use  App\Http\Controllers\ProductController;
 use App\Http\Controllers\testMomo;
 use GuzzleHttp\Psr7\Request;
 use App\Http\Controllers\FavoriteController;
+use App\Http\Controllers\ContactController;
+
 
 /*
 
@@ -68,3 +70,5 @@ Route::post('/payUrl', [testMomo::class,'payment']);
 
     // Hiển thị danh sách sản phẩm yêu thích của người dùng
 Route::post('/favorites', [FavoriteController::class, 'index'])->name('favorites.index');
+
+Route::get('/contact', [ContactController::class,'contact'])->name('contact');

@@ -24,6 +24,8 @@
     <link rel="stylesheet" href="{{ asset('asset/client/detail.css') }}">
     <link rel="stylesheet" href="{{ asset('asset/auth/login.css') }}">
     <link rel="stylesheet" href="{{ asset('asset/auth/register.css') }}">
+    <link rel="stylesheet" href="{{ asset('asset/client/contact.css') }}">
+
 
 
 
@@ -43,7 +45,7 @@
             <div class="title_menu">
                 <a class="p-3" href="{{ route('home') }}">Home</a>
                 <a class="p-3" href="{{ route('product') }}">Product</a>
-                <a class="p-3" href="#">Contact</a>
+                <a class="p-3" href="{{ route('contact') }}">Contact</a>
                 
 
             </div>
