@@ -15,7 +15,7 @@ class ManageProductController extends Controller
     public function index()
     {
         $manageProduct = ManageProduct::latest()->paginate(5);
-        return view('admin.index', compact('manageProduct'))->with('i', (request()->input('page', 1)-1)*5);
+        return view('admin.product.show', compact('manageProduct'))->with('i', (request()->input('page', 1)-1)*5);
     }
 
     /**

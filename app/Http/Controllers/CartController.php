@@ -27,4 +27,18 @@ class CartController extends Controller
      public function getCart(){
         return view('clients/webpage/cart');
     }
+    public function deleteCart(Request $request, $id)
+    {
+        $productId = (int) $id;
+        $cart = $request->session()->get('cart');
+    
+        if ($cart && array_key_exists($productId, $cart->items)) {
+            unset($cart->items[$productId]);
+            $cart->totalQty -= 1; // Giảm số lượng sản phẩm sau khi xóa
+            $request->session()->put('cart', $cart);
+            return redirect()->back()->with('message', 'Xóa khỏi giỏ hàng thành công');
+        } else {
+            return redirect()->back()->with('error', 'Xóa thất bại');
+        }
+    }
 }

@@ -29,13 +29,13 @@ use GuzzleHttp\Psr7\Request;
 
 
 //=================Route Admin====================
-Route::prefix('admin')->group(function(){
-    Route::resource('product', ManageProductController::class);
+// Route::prefix('admin')->group(function(){
+    Route::post('admin/product', [ManageProductController::class,'index'])->name('product');
 
     Route::resource('order', ManageOrderController::class);
 
     Route::resource('user', ManageUserController::class);
-});
+// });
 
 Route::get('/login', [AuthController::class,'login'])->name('login');
 Route::post('/login', [AuthController::class,'postLogin']);
@@ -67,3 +67,5 @@ Route::post('/payUrl', [testMomo::class,'payment']);
 Route::get('/add-to-cart/{id}',[CartController::class,'addToCart'])->name('post-cart');
 
 Route::get('/get-cart',[CartController::class,'getCart'])->name('cart-page');
+
+Route::get('/delete-cart/{id}', [CartController::class, 'deleteCart'])->name('delete-cart');
