@@ -1,43 +1,32 @@
 @extends('admin.layouts')
 @section( 'content')
-<div class="row">
-    <div class="col-lg-12" margin-tb>
-        <div class="pull-left">
-            <h2> Product </h2>
-        </div>
-        <div class=" pull-right" >
-<a class="btn btn-success" href=""></a>
-        </div>
-    </div>
-</div>
-@if ($message = section::get('success'))
-<div class="alert alert-succsess">
-    <p> {{$message}}</p>
-</div>
-@endif
-<table class="table table-bordered"> 
-<tr>
-    <th>No</th>
-    <th>Name</th>
-    <th>Detail</th>
-    <th width=280px> Action</th>
-</tr>
-@foreach($products as $product)
-    <tr>
-        <td>{{++$i}}</td>
-        <td>{{$products->name}}</td>
-        <td>{{$products->detail}}</td>
-        <td>
-            <form action="{{route('admin.destroy', $adminProduct->id)}}" method="POST">
-                <a class="btn btn-success" href="{{route('admin.show', $adminProduct->id)}}">Show</a>
-                <a class="btn btn-success" href="{{route('admin.edit', $adminProduct->id)}}">Edit</a>
-                @csrf
-                @method('delete')
-                <button type="submit" class="btn btn-danger">Delete</button>
-            </form>
-        </td>
+<h2> DashBoard </h2>
+<nav>
+    <ul>
+        <li><a href="#">
+                <i class="fas fa-home"></i>
+                <span class="nav-item">Home</span>
+            </a></li>
+        <li><a href="{{route('showUser')}}">
+                <i class="fas fa-user"></i>
+                <span class="nav-item">User</span>
+            </a></li>
+        <li><a href="{{route('showOrder')}}">
+                <i class="fas fa-wallet"></i>
+                <span class="nav-item">Order</span>
+            </a></li>
+        <li><a href="{{route('showProduct')}}">
+                <i class="fas fa-chart-bar"></i>
+                <span class="nav-item">Product</span>
+            </a></li>
+        <li><a href="{{route('home')}}" class="logout">
+                <i class="fas fa-sign-out-alt"></i>
+                <span class="nav-item">Log out</span>
+            </a></li>
+    </ul>
+</nav>
+<div class="dashborad">
 
-    </tr>
-@endforeach
-</table>
+</div>
+
 @endsection
