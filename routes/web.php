@@ -61,3 +61,5 @@ Route::get('payUrl',function(){
 })-> name('checkout-momo');
 
 Route::post('/payUrl', [testMomo::class,'payment']);
+//  Search
+Route::get('/search', [ProductController::class, 'search'])->name('search');
