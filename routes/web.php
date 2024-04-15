@@ -46,8 +46,9 @@ Route::post('/register', [AuthController::class,'postRegister']);
 
 Route::post('/logout', [AuthController::class,'logout'])->name('logout');
 Route::post('/AdminLogin', [AuthController::class,'AdminLogin'])->name('AdminLogin');
+//  Search
 
-
+Route::get('/search', [ProductController::class, 'search'])->name('search');
 
 Route::get('/',[ProductController::class,'index'])->name('home');
 
@@ -69,3 +70,4 @@ Route::get('/add-to-cart/{id}',[CartController::class,'addToCart'])->name('post-
 Route::get('/get-cart',[CartController::class,'getCart'])->name('cart-page');
 
 Route::get('/delete-cart/{id}', [CartController::class, 'deleteCart'])->name('delete-cart');
+Route::post('update-to-cart', [CartController::class, 'updateToCart'])->name('update-to-cart');

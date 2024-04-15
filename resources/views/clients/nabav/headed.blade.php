@@ -49,12 +49,27 @@
             </div>
             <div class="search">
                 <div class="input m-4">
-                    <a href=""><i class="fa fa-search" aria-hidden="true"></i></a>
-                    <input type="text" id="VisualSearchInput" class="pre-search-input headline-5" name="search" autocomplete="off" data-var="vsInput" tabindex="0" placeholder="Search" aria-label="Search Products" role="combobox" aria-controls="VisualSearchSuggestionsList" aria-owns="VisualSearchSuggestionsList" aria-expanded="false">
+                    <a href="{{ route('search') }}"><i class="fa fa-search" aria-hidden="true"></i></a>
+                    <input type="text" id="VisualSearchInput" class="pre-search-input headline-5" value="{{ isset($search) ? $search : '' }}" name="search" autocomplete="off" data-var="vsInput" tabindex="0" placeholder="Search" aria-label="Search Products" role="combobox" aria-controls="VisualSearchSuggestionsList" aria-owns="VisualSearchSuggestionsList" aria-expanded="false">
                 </div>
+                {{-- <div class="search col-6">
+                    <form action="{{ route('search') }}" class="col-9" style="display: flex" method="GET">
+                        <div class="form-group">
+                            <input class="form-control" type="search" name="search" placeholder="Search.." value="{{ isset($search) ? $search : '' }}" >
+                        </div>
+                        <button class="btn btn-primary">Search</button>
+                    </form>
+                </div> --}}
                 <div class="shopping-bag">
-                    <a href="{{ route('cart-page')}}"><i class="fa fa-shopping-bag " aria-hidden="true"></i></a>
+                        @if(!Session::has('cart') || Session::get('cart')->totalQty == 0)
+                        <a href="{{ route('cart-page')}}"><i class="fa fa-shopping-bag "></i></a>
+                    @else
+                        <a href="{{ route('cart-page')}}"><i class="fa fa-shopping-bag "></i>({{ Session('cart')->totalQty }})</a>
+                    @endif
                 </div>
+                {{-- <div class="shopping-bag">
+                    <a href="{{ route('cart-page')}}"><i class="fa fa-shopping-bag " aria-hidden="true"></i></a>
+                </div> --}}
 
                 
                 

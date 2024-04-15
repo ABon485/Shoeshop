@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use App\Models\Cart2;
 use Illuminate\Http\Request;
 use App\Models\Product;
 use Illuminate\Support\Facades\DB;
@@ -21,7 +21,7 @@ class CartController extends Controller
         $cart->add($product, $id);
         $request->session()->put('cart', $cart);
         
-        return redirect()->back()->with('message');
+        return redirect()->back()->with('message', 'Add to cart successfully');
     }
 
      public function getCart(){
@@ -41,4 +41,29 @@ class CartController extends Controller
             return redirect()->back()->with('error', 'Xóa thất bại');
         }
     }
+    public function updateCartItem(Request $request)
+    {
+        $productId = $request->input('product_id');
+        $quantity = $request->input('quantity');
+    
+        // Xử lý cập nhật số lượng sản phẩm trong giỏ hàng ở đây
+        // Ví dụ: 
+        $product = Product::find($productId);
+        $product->quantity = $quantity;
+        $product->price = $quantity * $product->unit_price;
+        $product->save();
+    
+        return response()->json(['success' => true]);
+    }
+    public function updateToCart(Request $request)
+{
+    $productId = $request->input('product_id');
+    $quantity = $request->input('qty');
+    $cart = session()->get('cart') ?? new Cart2();
+    
+    $cart->updateQuantity($productId, $quantity);
+    $cart->updateTotalPrice();
+    session()->put('cart', $cart);
+    return response()->json(['status' => 'Cart updated successfully']);
+}
 }
