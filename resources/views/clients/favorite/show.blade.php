@@ -5,7 +5,7 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Product User Table</title>
+        <title>Product Favorite</title>
         <style>
             table {
                 border-collapse: collapse;
@@ -35,10 +35,11 @@
                     <th>ID</th>
                     <th>IMAGE</th>
                     <th>User ID</th>
-                    <th>Product ID</th>
                     <th>Product Name</th>
                     <th>Created At</th>
                     <th>Updated At</th>
+                    <th>Action</th>
+
                 </tr>
             </thead>
             <tbody>
@@ -56,7 +57,6 @@
                             @endforeach
                         </td>
                         <td>{{ $item->user_id }}</td>
-                        <td>{{ $item->product_id }}</td>
                         <td>
                             @foreach ($products as $p )
                                 @if ($p->id == $idProd)
@@ -66,6 +66,17 @@
                         </td>
                         <td>{{ $item->created_at }}</td>
                         <td>{{ $item->updated_at }}</td>
+                        <td>
+                            <form action="{{ route('favorites.destroy', $item->id) }}" method="POST" style="display: inline;">
+                                @csrf
+                                @method('DELETE')
+                                <button type="submit" style="background: none; border: none;"><i class="fa fa-trash" aria-hidden="true" style="color: red;"></i></button>
+                            </form>
+                            
+                        </td>
+                        
+
+
                     </tr>
                 @endforeach
             </tbody>
@@ -74,4 +85,6 @@
     </body>
 
     </html>
+
+    
 @endsection

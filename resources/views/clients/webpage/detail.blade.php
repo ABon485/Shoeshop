@@ -60,7 +60,6 @@
                                                     <a href="{{ route('checkout-momo') }}" class="btn btn-success">
                                                         Buy now
                                                     </a>
-                                                    <a href=""><i class="fa fa-heart" style="color: red; font-size: 40px; margin-left:25px;margin-top:20px;" aria-hidden="true"></i></a>
 
                                                 </div>
                                                 <div class="col-md-8 mt-5">

@@ -71,7 +71,7 @@
             </div>
             <div>
                 <a href="{{ route('favorite') }}"><i class="fa fa-heart"
-                        style="color: rgb(158, 139, 139); font-size: 20px; margin-left:150px;"
+                        style="color: rgb(255, 0, 0); font-size: 20px; margin-left:150px;"
                         aria-hidden="true"></i>Favorite</a>
             </div>
             <div class="">

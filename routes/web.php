@@ -69,4 +69,6 @@ Route::post('/payUrl', [testMomo::class,'payment']);
     // Hiển thị danh sách sản phẩm yêu thích của người dùng
 Route::get('/favorite/{product}', [ProductController::class, 'favorite'])->name('webpage.favorite');
 Route::get('/favorite',[FavoriteController::class,'favorite'])->name('favorite');
+Route::delete('/favorites/{id}', [FavoriteController::class,'destroy'])->name('favorites.destroy');
+
 
