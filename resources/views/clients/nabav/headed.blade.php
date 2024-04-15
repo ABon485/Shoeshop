@@ -70,7 +70,7 @@
                 @endif
             </div>
             <div>
-                <a href=""><i class="fa fa-heart"
+                <a href="{{ route('favorite') }}"><i class="fa fa-heart"
                         style="color: rgb(158, 139, 139); font-size: 20px; margin-left:150px;"
                         aria-hidden="true"></i>Favorite</a>
             </div>
