@@ -5,7 +5,11 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class ManageOrder extends Model
+class AdminProduct extends Model
 {
     use HasFactory;
+    protected $fillable = [
+        'name', 'deatail'
+    ] ;
+
 }

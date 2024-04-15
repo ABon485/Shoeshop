@@ -7,6 +7,17 @@ use Illuminate\Support\Facades\DB;
 
 class ProductController extends Controller
 {
+    function search(Request $request){
+        $search = $request->input('search', '');
+        if($search != ""){
+            $products = Product::where('name', 'LIKE', "%$search%")
+                               ->orWhere('description', 'LIKE', "%$search%")
+                               ->get();  
+        } else {
+            $products = Product::all();
+        }
+        return view('clients.webpage.product', compact('products', 'search')); 
+}
     function index(){
         $products = product::all();
         return view('clients.webpage.home',compact('products'));

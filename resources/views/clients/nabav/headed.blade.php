@@ -48,10 +48,14 @@
 
             </div>
             <div class="search">
-                <div class="input m-4">
-                    <a href=""><i class="fa fa-search" aria-hidden="true"></i></a>
-                    <input type="text" id="VisualSearchInput" class="pre-search-input headline-5" name="search" autocomplete="off" data-var="vsInput" tabindex="0" placeholder="Search" aria-label="Search Products" role="combobox" aria-controls="VisualSearchSuggestionsList" aria-owns="VisualSearchSuggestionsList" aria-expanded="false">
-                </div>
+                <form action="{{ route('search') }}" method="GET" style="border: none;">
+                    <div class="input m-4">
+                        <input type="text" id="VisualSearchInput" class="pre-search-input headline-5" name="search" autocomplete="off" data-var="vsInput" tabindex="0" placeholder="Search" aria-label="Search Products" role="combobox" aria-controls="VisualSearchSuggestionsList" aria-owns="VisualSearchSuggestionsList" aria-expanded="false">
+                        <a href="{{ route('search') }}"><i class="fa fa-search" aria-hidden="true"></i></a>
+                    </div>
+                </form>
+                
+                
                 @if (Auth::check())
                     <a class="header-icon header-icon-user" href=""><i class="fa fa-user"
                             aria-hidden="true"></i>{{ Auth::user()->name }}</a>
