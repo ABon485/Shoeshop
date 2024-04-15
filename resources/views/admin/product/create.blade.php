@@ -6,8 +6,8 @@
         <div class="pull-left">
             <h2> Add new Product </h2>
         </div>
-        <div class=" pull-right">
-            <a class="btn btn-success" href="{{route('admin.index')}}">Back</a>
+        <div class="pull-right">
+            <a class="btn btn-success" href="{{route('home')}}">Back</a>
         </div>
     </div>
 </div>
@@ -23,7 +23,8 @@
 </div>
 @endif
 
-<form action="{{route('admin.store')}}">
+<form action="">
+    {{--  ví dụ action= "{{route('admin.store')}}" --}}
     @csrf
     <div class="row">
         <div class="col-xs-12 col-sm-12 col-md-12">
@@ -34,8 +35,8 @@
         </div>
         <div class="col-xs-12 col-sm-12 col-md-12">
             <div class="form-group">
-                <strong>Detail</strong>
-                <textarea name="detail" class="form-control" placeholder="Detail" style="height: 150px"> </textarea>
+                <strong>Description</strong>
+                <textarea name="description" class="form-control" placeholder="Description" style="height: 150px"> </textarea>
             </div>
         </div>
         <div class="col-xs-12 col-sm-12 col-md-12">

@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\ManageOrder;
+use App\Models\AdminProduct;
 use Illuminate\Http\Request;
 
-class ManageOrderController extends Controller
+class AdminProductController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,9 +14,15 @@ class ManageOrderController extends Controller
      */
     public function index()
     {
-        //
+        $manageProduct = "";
+        return view('admin.product.show');
     }
-
+    
+    public function showProduct()
+    {
+        $manageProduct = "";
+        return view('admin.product.show');
+    }
     /**
      * Show the form for creating a new resource.
      *
@@ -24,7 +30,7 @@ class ManageOrderController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.product.create');
     }
 
     /**
@@ -41,10 +47,10 @@ class ManageOrderController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\ManageOrder  $manageOrder
+     * @param  \App\Models\AdminProduct  $adminProduct
      * @return \Illuminate\Http\Response
      */
-    public function show(ManageOrder $manageOrder)
+    public function show(AdminProduct $adminProduct)
     {
         //
     }
@@ -52,22 +58,22 @@ class ManageOrderController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\ManageOrder  $manageOrder
+     * @param  \App\Models\AdminProduct  $adminProduct
      * @return \Illuminate\Http\Response
      */
-    public function edit(ManageOrder $manageOrder)
+    public function edit(AdminProduct $adminProduct)
     {
-        //
+        return view('admin.product.edit');
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\ManageOrder  $manageOrder
+     * @param  \App\Models\AdminProduct  $adminProduct
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, ManageOrder $manageOrder)
+    public function update(Request $request, AdminProduct $adminProduct)
     {
         //
     }
@@ -75,11 +81,14 @@ class ManageOrderController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\ManageOrder  $manageOrder
+     * @param  \App\Models\AdminProduct  $adminProduct
      * @return \Illuminate\Http\Response
      */
-    public function destroy(ManageOrder $manageOrder)
+    public function destroy(AdminProduct $id)
     {
-        //
+        $product = AdminProduct::findOrFail($id);
+
+        $product->delete();
+        echo"success delete user";
     }
 }

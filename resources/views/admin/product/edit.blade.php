@@ -6,8 +6,8 @@
         <div class="pull-left">
             <h2> Edit Product </h2>
         </div>
-        <div class=" pull-right">
-            <a class="btn btn-success" href="{{route('admin.index')}}">Back</a>
+        <div class="pull-right">
+            <a class="btn btn-success" href="{{route('home')}}">Back</a>
         </div>
     </div>
 </div>
@@ -23,43 +23,50 @@
 </div>
 @endif
 
-<form action="{{route('admin.update', $manageProduct->id)}}">
+<form action="">
+    {{-- ví dụ: action="{{route('admin.update', $manageProduct->id)}}" --}}
     @csrf
     <div class="row">
         <div class="col-xs-12 col-sm-12 col-md-12">
             <div class="form-group">
                 <strong>Name</strong>
-                <input type="text" name="name" value={{$manageProduct->name}} class="form-control" placeholder="Name">
+                <input type="text" name="name" class="form-control" placeholder="Name">
+                {{--  cái này thuộc thẻ input nha: value={{$manageProduct->name}}  --}}
             </div>
         </div>
         <div class="col-xs-12 col-sm-12 col-md-12">
             <div class="form-group">
                 <strong>Detail</strong>
-                <textarea name="detail" class="form-control" placeholder="Detail" style="height: 150px"> {{$manageProduct->detail}}</textarea>
+                <textarea name="detail" class="form-control" placeholder="Detail" style="height: 150px"> </textarea>
+                {{-- cái này thuộc thẻ textarea nhe: Value={{$manageProduct->detail}} --}}
             </div>
         </div>
         <div class="col-xs-12 col-sm-12 col-md-12">
             <div class="form-group">
                 <strong>Price</strong>
-                <input type="text" name="price"  value={{$manageProduct->price}} class="form-control" placeholder="Price">
+                <input type="text" name="price"  class="form-control" placeholder="Price">
+                {{-- cái này thuộc thẻ input nha:value={{$manageProduct->price}}  --}}
             </div>
         </div>
         <div class="col-xs-12 col-sm-12 col-md-12">
             <div class="form-group">
                 <strong>Size</strong>
-                <input type="text" name="size"  value={{$manageProduct->size}}  class="form-control" placeholder="Size">
+                <input type="text" name="size"   class="form-control" placeholder="Size">
+                {{-- cái này thuộc thẻ input nha:value={{$manageProduct->size}}   --}}
             </div>
         </div>
         <div class="col-xs-12 col-sm-12 col-md-12">
             <div class="form-group">
                 <strong>Quantity</strong>
-                <input type="text" name="quantity"  value={{$manageProduct->quantity}} class="form-control" placeholder="Quantity">
+                <input type="text" name="quantity"   class="form-control" placeholder="Quantity">
+                {{-- cái này thuộc thẻ input nha: value={{$manageProduct->quantity}}--}}
             </div>
         </div>
         <div class="col-xs-12 col-sm-12 col-md-12">
             <div class="form-group">
                 <strong>Image</strong>
-                <input type="file" name="image"  value={{$manageProduct->image}} class="form-control" placeholder="Image">
+                <input type="file" name="image"  class="form-control" placeholder="Image">
+                {{-- cái này thuộc thẻ input nha: value={{$manageProduct->image}}  --}}
             </div>
         </div>
         <div class="col-xs-12 col-sm-12 col-md-12">

@@ -1,46 +1,50 @@
 @extends('admin.layouts')
 
 @section('content')
-<div class="row">
-    <div class="col-lg-12" margin-tb>
-        <div class="pull-left">
-            <h2>Show Order</h2>
-        </div>
-        <div class="pull-right">
-            <a class="btn btn-success" href="{{route('admin.index')}}">Back</a>
-        </div>
-    </div>
-</div>
-<div class="row">
-    <div class="col-xs-12 col-sm-12 col-md-12" >
-        <div class="form-group">
-            <strong>ID</strong>{{$manageOrder->total_id}}
-        </div>
-    </div>
-    <div class="col-xs-12 col-sm-12 col-md-12" >
-        <div class="form-group">
-            <strong>Total</strong>{{$manageOrder->total}}
-        </div>
-    </div>
-    <div class="col-xs-12 col-sm-12 col-md-12" >
-        <div class="form-group">
-            <strong>Status</strong>{{$manageOrder->status}}
-        </div>
-    </div>
-    <div class="col-xs-12 col-sm-12 col-md-12" >
-        <div class="form-group">
-            <strong>Name</strong>{{$manageOrder->name}}
-        </div>
-    </div>
-    <div class="col-xs-12 col-sm-12 col-md-12" >
-        <div class="form-group">
-            <strong>Product_id</strong>{{$manageOrder->product_id}}
-        </div>
-    </div>
-    <div class="col-xs-12 col-sm-12 col-md-12" >
-        <div class="form-group">
-            <strong>User_id</strong>{{$manageOrder->user_id}}
-        </div>
-    </div>
-</div>
 
+<h2>Show Order</h2>
+<div class="pull-right">
+    <a class="btn btn-success" href="{{route('home')}}">Back</a>
+</div>
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Total</th>
+            <th>Status</th>
+            <th>Name</th>
+            <th>Product_id</th>
+            <th>User_id</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>Order_001</td>
+            <td>600</td>
+            <td>Đã nhận hàng </td>
+            <td>Doe</td>
+            <td>Prduct_001</td>
+            <td>User_002</td>
+        </tr>
+        <tr>
+            <td>Order_002</td>
+            <td>600</td>
+            <td>Đã nhận hàng </td>
+            <td>Doe</td>
+            <td>Prduct_003</td>
+            <td>User_002</td>
+        </tr>
+        <tr>
+            <td>Order_003</td>
+            <td>600</td>
+            <td>Đã nhận hàng </td>
+            <td>Doe</td>
+            <td>Prduct_005</td>
+            <td>User_001</td>
+        </tr>
+    </tbody>
+</table>
+   
+   
+
+@endsection

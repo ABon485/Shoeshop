@@ -4,11 +4,9 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\CartController;
 use Illuminate\Support\Facades\Route;
 
-
-
-use  App\Http\Controllers\ManageProductController;
-use  App\Http\Controllers\ManageOrderController;
-use  App\Http\Controllers\ManageUserController;
+use  App\Http\Controllers\AdminOrderController;
+use  App\Http\Controllers\AdminProductController;
+use  App\Http\Controllers\AdminUserController;
 
 use  App\Http\Controllers\ProductController;
 use App\Http\Controllers\testMomo;
@@ -25,17 +23,6 @@ use GuzzleHttp\Psr7\Request;
 | contains the "web" middleware group. Now create something great!
 |
 */
-
-
-
-//=================Route Admin====================
-// Route::prefix('admin')->group(function(){
-    Route::post('admin/product', [ManageProductController::class,'index'])->name('product');
-
-    Route::resource('order', ManageOrderController::class);
-
-    Route::resource('user', ManageUserController::class);
-// });
 
 Route::get('/login', [AuthController::class,'login'])->name('login');
 Route::post('/login', [AuthController::class,'postLogin']);
@@ -56,14 +43,6 @@ Route::get('/product',[ProductController::class,'getproduct'])->name('product');
 
 Route::get('/detail/{id}',[ProductController::class,'Detailproduct'])->name('Detailproduct');
 
-
-// Checkout 
-Route::get('payUrl',function(){
-    return view('webpage.testMomo');
-})-> name('checkout-momo');
-
-Route::post('/payUrl', [testMomo::class,'payment']);
-
 //để liên kết với nút hình Giỏ hàng để thêm sản phẩm vào giỏ hàng
 Route::get('/add-to-cart/{id}',[CartController::class,'addToCart'])->name('post-cart');
 
@@ -71,3 +50,32 @@ Route::get('/get-cart',[CartController::class,'getCart'])->name('cart-page');
 
 Route::get('/delete-cart/{id}', [CartController::class, 'deleteCart'])->name('delete-cart');
 Route::post('update-to-cart', [CartController::class, 'updateToCart'])->name('update-to-cart');
+
+// Checkout 
+Route::get('payUrl',function(){
+    return view('webpage.testMomo');
+})-> name('checkout-momo');
+
+Route::post('/payUrl', [testMomo::class,'payment']);
+//  Search
+Route::get('/search', [ProductController::class, 'search'])->name('search');
+
+
+//=================Route Admin====================
+
+// show home admin
+Route::get('/admin',[AdminOrderController::class,'index'])->name('home');
+
+// show page Order
+Route::get('/showOrder',[AdminOrderController::class,'showOrder'])->name('showOrder');
+// show page User
+Route::get('/showUser',[AdminUserController::class,'showUser'])->name('showUser');
+
+// show page Product
+Route::get('/showProduct',[AdminProductController::class,'showProduct'])->name('showProduct');
+// show page form create product
+Route::get('/createProduct',[AdminProductController::class,'create'])->name('createProduct');
+// show page form edit product
+Route::get('/editProduct',[AdminProductController::class,'edit'])->name('editProduct');
+// show page form delete product
+Route::get('/deleteProduct',[AdminProductController::class,'delete'])->name('deleteProduct');
