@@ -24,8 +24,8 @@
     <link rel="stylesheet" href="{{ asset('asset/client/detail.css') }}">
     <link rel="stylesheet" href="{{ asset('asset/auth/login.css') }}">
     <link rel="stylesheet" href="{{ asset('asset/auth/register.css') }}">
-
-
+    <link rel="stylesheet" href="{{ asset('asset/client/cart.css') }}">
+    @yield('css')
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
@@ -48,12 +48,29 @@
 
             </div>
             <div class="search">
-                <form action="{{ route('search') }}" method="GET" style="border: none;">
-                    <div class="input m-4">
-                        <input type="text" id="VisualSearchInput" class="pre-search-input headline-5" name="search" autocomplete="off" data-var="vsInput" tabindex="0" placeholder="Search" aria-label="Search Products" role="combobox" aria-controls="VisualSearchSuggestionsList" aria-owns="VisualSearchSuggestionsList" aria-expanded="false">
-                        <a href="{{ route('search') }}"><i class="fa fa-search" aria-hidden="true"></i></a>
-                    </div>
-                </form>
+                <div class="input m-4">
+                    <a href="{{ route('search') }}"><i class="fa fa-search" aria-hidden="true"></i></a>
+                    <input type="text" id="VisualSearchInput" class="pre-search-input headline-5" value="{{ isset($search) ? $search : '' }}" name="search" autocomplete="off" data-var="vsInput" tabindex="0" placeholder="Search" aria-label="Search Products" role="combobox" aria-controls="VisualSearchSuggestionsList" aria-owns="VisualSearchSuggestionsList" aria-expanded="false">
+                </div>
+                {{-- <div class="search col-6">
+                    <form action="{{ route('search') }}" class="col-9" style="display: flex" method="GET">
+                        <div class="form-group">
+                            <input class="form-control" type="search" name="search" placeholder="Search.." value="{{ isset($search) ? $search : '' }}" >
+                        </div>
+                        <button class="btn btn-primary">Search</button>
+                    </form>
+                </div> --}}
+                <div class="shopping-bag">
+                        @if(!Session::has('cart') || Session::get('cart')->totalQty == 0)
+                        <a href="{{ route('cart-page')}}"><i class="fa fa-shopping-bag "></i></a>
+                    @else
+                        <a href="{{ route('cart-page')}}"><i class="fa fa-shopping-bag "></i>({{ Session('cart')->totalQty }})</a>
+                    @endif
+                </div>
+                {{-- <div class="shopping-bag">
+                    <a href="{{ route('cart-page')}}"><i class="fa fa-shopping-bag " aria-hidden="true"></i></a>
+                </div> --}}
+
                 
                 
                 @if (Auth::check())
@@ -70,15 +87,6 @@
                     <a class="btn btn-success btn-icon" href="{{ route('register') }}">Register</a>
                 @endif
             </div>
-            <div class="">
-                <svg aria-hidden="true" class="pre-nav-design-icon" focusable="false" viewBox="0 0 24 24" role="img" width="24px" height="24px" fill="none">
-                    <path stroke="currentColor" stroke-width="1.5"
-                        d="M8.25 8.25V6a2.25 2.25 0 012.25-2.25h3a2.25 2.25 0 110 4.5H3.75v8.25a3.75 3.75 0 003.75 3.75h9a3.75 3.75 0 003.75-3.75V8.25H17.5">
-                    </path>
-                </svg>
-                <span class="pre-jewel pre-cart-jewel text-color-primary-dark" style="visibility: visible;"data-var="jewel">1</span>
-            </div>
-
         </div>
     </div>
 

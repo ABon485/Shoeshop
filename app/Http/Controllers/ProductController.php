@@ -4,7 +4,8 @@ namespace App\Http\Controllers;
 use App\Models\Product;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
-
+use Illuminate\Support\Facades\Session;
+use App\Models\Cart;
 class ProductController extends Controller
 {
     function search(Request $request){
@@ -38,7 +39,6 @@ class ProductController extends Controller
         // Các xử lý khác với biến $product
         return view('clients.webpage.detail', compact('product'));
     }
-    
 }
 
     

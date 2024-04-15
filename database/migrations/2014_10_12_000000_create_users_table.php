@@ -19,7 +19,6 @@ return new class extends Migration
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
-            $table->boolean('favorite');
             $table->rememberToken();
             $table->integer('role')->default(0); // Thêm trường role với giá trị mặc định là 0
             $table->timestamps();
