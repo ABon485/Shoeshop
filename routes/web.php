@@ -67,4 +67,4 @@ Route::post('/payUrl', [testMomo::class,'payment']);
 
 
     // Hiển thị danh sách sản phẩm yêu thích của người dùng
-Route::post('/favorites', [FavoriteController::class, 'index'])->name('favorites.index');
+Route::post('/favorite/{product}/{user}', [FavoriteController::class, 'favorite'])->name('webpage.favorite');

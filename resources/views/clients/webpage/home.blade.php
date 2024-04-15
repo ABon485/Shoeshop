@@ -44,10 +44,13 @@
                                         href="{{ route('Detailproduct', ['id' => $product->id]) }}">
                                         <img src="{{ asset('images/' . $product->image) }}"
                                             class="card-img-top img-fluid product-thumbnail">
-                                        <div class="card-body mt-3 ml-3">
+                                        @if(auth('web')->check())
+                                        <div class="card-body mt- ml-3">
                                             <a class="text-decoration-none" href="{{ route('Detailproduct', ['id' => $product->id]) }}">View all</a>
-                                            <a href=""><i class="fa fa-heart" style="color: red; font-size: 20px; margin-left:150px;" aria-hidden="true"></i></a>
+                                            <a href="{{ route('webpage.favorite',$product->id) }}"><i class=" heart1 fa fa-heart" style="color: rgb(163, 144, 144); font-size: 20px; margin-left:150px;" aria-hidden="true"></i></a>
+                                            <a href="{{ route('webpage.favorite',$product->id) }}"><i class=" heart2 fa fa-heart" style="color: red; font-size: 20px; margin-left:150px;" aria-hidden="true"></i></a>
                                         </div>
+                                        @endif
                                     </a>
                                 </div>
                             </div>

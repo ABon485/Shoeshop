@@ -44,13 +44,16 @@
                 <a class="p-3" href="{{ route('home') }}">Home</a>
                 <a class="p-3" href="{{ route('product') }}">Product</a>
                 <a class="p-3" href="#">Contact</a>
-                
+
 
             </div>
             <div class="search">
                 <div class="input m-4">
                     <a href=""><i class="fa fa-search" aria-hidden="true"></i></a>
-                    <input type="text" id="VisualSearchInput" class="pre-search-input headline-5" name="search" autocomplete="off" data-var="vsInput" tabindex="0" placeholder="Search" aria-label="Search Products" role="combobox" aria-controls="VisualSearchSuggestionsList" aria-owns="VisualSearchSuggestionsList" aria-expanded="false">
+                    <input type="text" id="VisualSearchInput" class="pre-search-input headline-5" name="search"
+                        autocomplete="off" data-var="vsInput" tabindex="0" placeholder="Search"
+                        aria-label="Search Products" role="combobox" aria-controls="VisualSearchSuggestionsList"
+                        aria-owns="VisualSearchSuggestionsList" aria-expanded="false">
                 </div>
                 @if (Auth::check())
                     <a class="header-icon header-icon-user" href=""><i class="fa fa-user"
@@ -66,13 +69,20 @@
                     <a class="btn btn-success btn-icon" href="{{ route('register') }}">Register</a>
                 @endif
             </div>
+            <div>
+                <a href=""><i class="fa fa-heart"
+                        style="color: rgb(158, 139, 139); font-size: 20px; margin-left:150px;"
+                        aria-hidden="true"></i>Favorite</a>
+            </div>
             <div class="">
-                <svg aria-hidden="true" class="pre-nav-design-icon" focusable="false" viewBox="0 0 24 24" role="img" width="24px" height="24px" fill="none">
+                <svg aria-hidden="true" class="pre-nav-design-icon" focusable="false" viewBox="0 0 24 24" role="img"
+                    width="24px" height="24px" fill="none">
                     <path stroke="currentColor" stroke-width="1.5"
                         d="M8.25 8.25V6a2.25 2.25 0 012.25-2.25h3a2.25 2.25 0 110 4.5H3.75v8.25a3.75 3.75 0 003.75 3.75h9a3.75 3.75 0 003.75-3.75V8.25H17.5">
                     </path>
                 </svg>
-                <span class="pre-jewel pre-cart-jewel text-color-primary-dark" style="visibility: visible;"data-var="jewel">1</span>
+                <span class="pre-jewel pre-cart-jewel text-color-primary-dark"
+                    style="visibility: visible;"data-var="jewel">1</span>
             </div>
 
         </div>
