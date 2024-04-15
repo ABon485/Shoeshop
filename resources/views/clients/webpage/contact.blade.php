@@ -1,5 +1,6 @@
 @extends('clients.nabav.layout')
 @section('content')
+
 <div class="container">
     <form method="post" action="contact-process.php" id="contact-form">
         <div class="form-group">
@@ -27,4 +28,5 @@
             referrerpolicy="no-referrer-when-downgrade"></iframe>
     </div>
 </div>
+
 @endsection

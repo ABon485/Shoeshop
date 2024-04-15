@@ -9,6 +9,7 @@ class ContactController extends Controller
     //
     function contact()
     {
+        
         return view('clients.webpage.contact');
     }
 }
