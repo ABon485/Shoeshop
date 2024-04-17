@@ -67,6 +67,7 @@
                                                     <a href="{{ route('checkout-momo') }}" class="btn btn-success">
                                                         Buy now
                                                     </a>
+
                                                 </div>
                                                 <div class="col-md-8 mt-5">
                                                  

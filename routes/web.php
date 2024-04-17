@@ -12,6 +12,9 @@ use  App\Http\Controllers\ProductController;
 use  App\Http\Controllers\CheckoutController;
 use App\Http\Controllers\testMomo;
 use GuzzleHttp\Psr7\Request;
+use App\Http\Controllers\FavoriteController;
+use App\Http\Controllers\ContactController;
+
 
 /*
 
@@ -61,6 +64,22 @@ Route::get('payUrl',function(){
 })-> name('checkout-momo');
 
 Route::post('/payUrl', [testMomo::class,'payment']);
+
+
+
+
+
+    // Hiển thị danh sách sản phẩm yêu thích của người dùng
+
+Route::post('/favorites', [FavoriteController::class, 'index'])->name('favorites.index');
+
+Route::get('/contact', [ContactController::class,'contact'])->name('contact');
+Route::get('/favorite/{product}', [ProductController::class, 'favorite'])->name('webpage.favorite');
+Route::get('/favorite',[FavoriteController::class,'favorite'])->name('favorite');
+Route::delete('/favorites/{id}', [FavoriteController::class,'destroy'])->name('favorites.destroy');
+
+
+
 //  Search
 Route::get('/search', [ProductController::class, 'search'])->name('search');
 
@@ -83,3 +102,4 @@ Route::get('/createProduct',[AdminProductController::class,'create'])->name('cre
 Route::get('/editProduct',[AdminProductController::class,'edit'])->name('editProduct');
 // show page form delete product
 Route::get('/deleteProduct',[AdminProductController::class,'delete'])->name('deleteProduct');
+
