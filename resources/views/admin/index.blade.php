@@ -7,7 +7,7 @@
                 <i class="fas fa-home"></i>
                 <span class="nav-item">Home</span>
             </a></li>
-        <li><a href="{{route('showUser')}}">
+        <li><a href="{{route('index')}}">
                 <i class="fas fa-user"></i>
                 <span class="nav-item">User</span>
             </a></li>
@@ -18,10 +18,6 @@
         <li><a href="{{route('showProduct')}}">
                 <i class="fas fa-chart-bar"></i>
                 <span class="nav-item">Product</span>
-            </a></li>
-        <li><a href="{{route('home')}}" class="logout">
-                <i class="fas fa-sign-out-alt"></i>
-                <span class="nav-item">Log out</span>
             </a></li>
     </ul>
 </nav>

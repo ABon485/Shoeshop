@@ -87,8 +87,6 @@ Route::get('/admin',[AdminOrderController::class,'index'])->name('home');
 
 // show page Order
 Route::get('/showOrder',[AdminOrderController::class,'showOrder'])->name('showOrder');
-// show page User
-Route::get('/showUser',[AdminUserController::class,'showUser'])->name('showUser');
 
 // show page Product
 Route::get('/showProduct',[AdminProductController::class,'showProduct'])->name('showProduct');
@@ -98,4 +96,12 @@ Route::get('/createProduct',[AdminProductController::class,'create'])->name('cre
 Route::get('/editProduct',[AdminProductController::class,'edit'])->name('editProduct');
 // show page form delete product
 Route::get('/deleteProduct',[AdminProductController::class,'delete'])->name('deleteProduct');
+
+Route::get('/showUser',[AdminUserController::class,'index'])->name('index');
+Route::get('/edit',[AdminUserController::class,'edit'])->name('edit');
+Route::get('/destroy/{id}',[AdminUserController::class,'destroy'])->name('destroy');
+Route::get('/showUser/{id}',[AdminUserController::class,'show'])->name('show');
+
+
+
 
