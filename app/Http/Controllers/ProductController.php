@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 use App\Models\Product;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use App\Models\Favorite;
 use Illuminate\Support\Facades\Session;
 use App\Models\Cart;
 class ProductController extends Controller
@@ -39,6 +40,17 @@ class ProductController extends Controller
         // Các xử lý khác với biến $product
         return view('clients.webpage.detail', compact('product'));
     }
+    public function favorite($product_id)
+    {
+        $user_id = auth('web')->id();
+        $data = [
+            'product_id' => $product_id,
+            'user_id' => auth('web')->id()
+        ];
+        Favorite::create($data);
+        return redirect()->back()->with('ok', 'Bạn đã yêu thích sản phẩm.');
+    }
+
 }
 
     
