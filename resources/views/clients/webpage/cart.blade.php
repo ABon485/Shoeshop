@@ -58,7 +58,13 @@
                                 </td>
                                 <td class="product-remove">
                                     <a href="{{ route('delete-cart', $product['item']['id']) }}" class="remove" title="Remove this item"><i class="fa fa-trash-o"></i></a>
+                                    <div class="col-md-4 mt-5">
+                                        <a href="{{ route('checkout-momo') }}" class="btn btn-success">
+                                            Buy now
+                                        </a>
+                                    </div>
                                 </td>
+                                td
                            
                             </tr>
                         @endforeach
@@ -75,4 +81,45 @@
         integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+" crossorigin="anonymous">
     </script>
 </div>
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+  // Lấy tất cả các phần tử quantity-group trên trang
+  const quantityGroups = document.querySelectorAll('.quantity-group');
+
+  // Lặp qua từng quantity-group và gán bộ xử lý sự kiện cho nút + và -
+  quantityGroups.forEach(function(quantityGroup) {
+    const decrementBtn = quantityGroup.querySelector('.decrement-btn');
+    const incrementBtn = quantityGroup.querySelector('.increment-btn');
+    const qtyInput = quantityGroup.querySelector('.qty-input');
+    const amountSpan = quantityGroup.closest('tr').querySelector('.amount');
+
+    // Bộ xử lý sự kiện khi nhấp vào nút -
+    decrementBtn.addEventListener('click', function() {
+      let quantity = parseInt(qtyInput.value);
+      if (quantity > 1) {
+        quantity--;
+        qtyInput.value = quantity;
+        updatePrice(quantity);
+      }
+    });
+
+    // Bộ xử lý sự kiện khi nhấp vào nút +
+    incrementBtn.addEventListener('click', function() {
+      let quantity = parseInt(qtyInput.value);
+      if (quantity < 10) {
+        quantity++;
+        qtyInput.value = quantity;
+        updatePrice(quantity);
+      }
+    });
+
+    // Hàm cập nhật giá trị
+    function updatePrice(quantity) {
+      const price = parseFloat(amountSpan.dataset.price);
+      const totalPrice = price * quantity;
+      amountSpan.textContent = totalPrice.toFixed(2);
+    }
+  });
+});
+</script>
 @endsection

@@ -7,7 +7,7 @@
             <h2> Add new Product </h2>
         </div>
         <div class="pull-right">
-            <a class="btn btn-success" href="{{route('home')}}">Back</a>
+            <a class="btn btn-success" href="{{route('showProduct')}}">Back</a>
         </div>
     </div>
 </div>
@@ -23,14 +23,13 @@
 </div>
 @endif
 
-<form action="">
-    {{--  ví dụ action= "{{route('admin.store')}}" --}}
+<form action="{{ route('Product.store', $product->id) }}" method="POST">
     @csrf
     <div class="row">
         <div class="col-xs-12 col-sm-12 col-md-12">
             <div class="form-group">
                 <strong>Name</strong>
-                <input type="text" name="name" class="form-control" placeholder="Name">
+                <input type="text" name="name" class="form-control" placeholder="Name" >
             </div>
         </div>
         <div class="col-xs-12 col-sm-12 col-md-12">

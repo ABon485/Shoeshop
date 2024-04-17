@@ -64,7 +64,7 @@ Route::get('/search', [ProductController::class, 'search'])->name('search');
 //=================Route Admin====================
 
 // show home admin
-Route::get('/admin',[AdminOrderController::class,'index'])->name('home');
+Route::get('/admin',[AdminOrderController::class,'index'])->name('adminHome');
 
 // show page Order
 Route::get('/showOrder',[AdminOrderController::class,'showOrder'])->name('showOrder');
@@ -72,10 +72,16 @@ Route::get('/showOrder',[AdminOrderController::class,'showOrder'])->name('showOr
 Route::get('/showUser',[AdminUserController::class,'showUser'])->name('showUser');
 
 // show page Product
-Route::get('/showProduct',[AdminProductController::class,'showProduct'])->name('showProduct');
+Route::get('/showProduct',[AdminProductController::class,'index'])->name('showProduct');
 // show page form create product
 Route::get('/createProduct',[AdminProductController::class,'create'])->name('createProduct');
+
+Route::p('/Product',[AdminProductController::class,'store'])->name('Product.store');
+
 // show page form edit product
 Route::get('/editProduct',[AdminProductController::class,'edit'])->name('editProduct');
+
+Route::get('/updateProduct',[AdminProductController::class,'update'])->name('updateProduct');
+
 // show page form delete product
-Route::get('/deleteProduct',[AdminProductController::class,'delete'])->name('deleteProduct');
+Route::get('/deleteProduct',[AdminProductController::class,'destroy'])->name('deleteProduct');

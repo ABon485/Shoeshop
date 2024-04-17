@@ -23,24 +23,24 @@
 </div>
 @endif
 
-<form action="">
+<form action="{{ route('updateProduct', $product->id) }}">
     {{-- ví dụ: action="{{route('admin.update', $manageProduct->id)}}" --}}
     @csrf
     <div class="row">
         <div class="col-xs-12 col-sm-12 col-md-12">
             <div class="form-group">
                 <strong>Name</strong>
-                <input type="text" name="name" class="form-control" placeholder="Name">
+                <input type="text" name="name" class="form-control" placeholder="Name" value="{{ isset($product) ? $product->name :old('name') }}">
                 {{--  cái này thuộc thẻ input nha: value={{$manageProduct->name}}  --}}
             </div>
         </div>
         <div class="col-xs-12 col-sm-12 col-md-12">
             <div class="form-group">
-                <strong>Detail</strong>
-                <textarea name="detail" class="form-control" placeholder="Detail" style="height: 150px"> </textarea>
+                <strong>Description</strong>
+                <textarea name="description" class="form-control" placeholder="Detail" value="{{ isset($product) ? $product->description :old('description') }}"style="height: 150px"> </textarea>
                 {{-- cái này thuộc thẻ textarea nhe: Value={{$manageProduct->detail}} --}}
             </div>
-        </div>
+        </div> 
         <div class="col-xs-12 col-sm-12 col-md-12">
             <div class="form-group">
                 <strong>Price</strong>
