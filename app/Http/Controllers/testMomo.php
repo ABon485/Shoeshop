@@ -6,39 +6,44 @@ use Illuminate\Http\Request;
 
 class testMomo extends Controller
 {
-    
+
     public function execPostRequest($url, $data)
-        {
-            $ch = curl_init($url);
-            curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "POST");
-            curl_setopt($ch, CURLOPT_POSTFIELDS, $data);
-            curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-            curl_setopt($ch, CURLOPT_HTTPHEADER, array(
-                    'Content-Type: application/json',
-                    'Content-Length: ' . strlen($data))
-            );
-            curl_setopt($ch, CURLOPT_TIMEOUT, 5);
-            curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, 5);
-    
-            $result = curl_exec($ch);
-    
-            curl_close($ch);
-            return $result;
-        } 
-    public function payment(Request $request){
+    {
+        $ch = curl_init($url);
+        curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "POST");
+        curl_setopt($ch, CURLOPT_POSTFIELDS, $data);
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+        curl_setopt(
+            $ch,
+            CURLOPT_HTTPHEADER,
+            array(
+                'Content-Type: application/json',
+                'Content-Length: ' . strlen($data)
+            )
+        );
+        curl_setopt($ch, CURLOPT_TIMEOUT, 5);
+        curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, 5);
+
+        $result = curl_exec($ch);
+
+        curl_close($ch);
+        return $result;
+    }
+    public function payment(Request $request)
+    {
         // dd($request->price);
         $endpoint = "https://test-payment.momo.vn/v2/gateway/api/create";
         $partnerCode = 'MOMOBKUN20180529';
         $accessKey = "klm05TvNBzhg7h7j";
         $secretKey = 'at67qH6mk8w5Y1nAyMoYKMWACiEi2bsa';
 
-        $orderInfo ='Nhi'; //Info
+        $orderInfo = 'Nhi'; //Info
         $amount = $request->price; //Price Total
-        $orderId = time() . mt_rand(1000, 9999); 
-        $redirectUrl ="http://127.0.0.1:8000/ordered";
-        $ipnUrl = "http://127.0.0.1:8000/ordered"; 
+        $orderId = time() . mt_rand(1000, 9999);
+        $redirectUrl = "http://127.0.0.1:8000/ordered";
+        $ipnUrl = "http://127.0.0.1:8000/ordered";
         $extraData = ""; // Extra data to display on Momopay
-        
+
         $partnerCode = $partnerCode;
         $accessKey = $accessKey;
         $serectkey = $secretKey;
@@ -48,7 +53,7 @@ class testMomo extends Controller
         $ipnUrl = $ipnUrl;
         $redirectUrl = $redirectUrl;
         $extraData = $extraData;
-    
+
         $requestId = time() . "";
         $requestType = "payWithATM";
         $rawHash = "accessKey=" . $accessKey . "&amount=" . $amount . "&extraData=" . $extraData . "&ipnUrl=" . $ipnUrl . "&orderId=" . $orderId . "&orderInfo=" . $orderInfo . "&partnerCode=" . $partnerCode . "&redirectUrl=" . $redirectUrl . "&requestId=" . $requestId . "&requestType=" . $requestType;
@@ -66,9 +71,10 @@ class testMomo extends Controller
             'lang' => 'vi',
             'extraData' => $extraData,
             'requestType' => $requestType,
-            'signature' => $signature);
+            'signature' => $signature
+        );
         $result = $this->execPostRequest($endpoint, json_encode($data));
-        $jsonResult = json_decode($result, true); 
+        $jsonResult = json_decode($result, true);
         if (isset($jsonResult['payUrl'])) {
             return redirect()->away($jsonResult['payUrl']);
         } else {

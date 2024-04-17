@@ -9,6 +9,7 @@ use  App\Http\Controllers\AdminProductController;
 use  App\Http\Controllers\AdminUserController;
 
 use  App\Http\Controllers\ProductController;
+use  App\Http\Controllers\CheckoutController;
 use App\Http\Controllers\testMomo;
 use GuzzleHttp\Psr7\Request;
 
@@ -51,9 +52,12 @@ Route::get('/get-cart',[CartController::class,'getCart'])->name('cart-page');
 Route::get('/delete-cart/{id}', [CartController::class, 'deleteCart'])->name('delete-cart');
 Route::post('update-to-cart', [CartController::class, 'updateToCart'])->name('update-to-cart');
 
-// Checkout 
+// Hiển thị form confirm Checkout
+Route::get('/checkout', [CheckoutController::class, 'getDataFromSession']);
+
+// Checkout-momo
 Route::get('payUrl',function(){
-    return view('webpage.testMomo');
+    return view('clients.webpage.checkout');
 })-> name('checkout-momo');
 
 Route::post('/payUrl', [testMomo::class,'payment']);
