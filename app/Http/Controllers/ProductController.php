@@ -4,9 +4,22 @@ namespace App\Http\Controllers;
 use App\Models\Product;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
-
+use App\Models\Favorite;
+use Illuminate\Support\Facades\Session;
+use App\Models\Cart;
 class ProductController extends Controller
 {
+    function search(Request $request){
+        $search = $request->input('search', '');
+        if($search != ""){
+            $products = Product::where('name', 'LIKE', "%$search%")
+                               ->orWhere('description', 'LIKE', "%$search%")
+                               ->get();  
+        } else {
+            $products = Product::all();
+        }
+        return view('clients.webpage.product', compact('products', 'search')); 
+}
     function index(){
         $products = product::all();
         return view('clients.webpage.home',compact('products'));
@@ -27,7 +40,17 @@ class ProductController extends Controller
         // Các xử lý khác với biến $product
         return view('clients.webpage.detail', compact('product'));
     }
-    
+    public function favorite($product_id)
+    {
+        $user_id = auth('web')->id();
+        $data = [
+            'product_id' => $product_id,
+            'user_id' => auth('web')->id()
+        ];
+        Favorite::create($data);
+        return redirect()->back()->with('ok', 'Bạn đã yêu thích sản phẩm.');
+    }
+
 }
 
     

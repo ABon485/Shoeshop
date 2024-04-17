@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\ManageUser;
+use App\Models\AdminOrder;
 use Illuminate\Http\Request;
 
-class ManageUserController extends Controller
+class AdminOrderController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,7 +14,13 @@ class ManageUserController extends Controller
      */
     public function index()
     {
-        //
+        $manageOrder = "";
+        return view('admin.index');
+    }
+    public function showOrder()
+    {
+        $products = "";
+        return view('admin.order.show');
     }
 
     /**
@@ -41,10 +47,10 @@ class ManageUserController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\ManageUser  $manageUser
+     * @param  \App\Models\AdminOrder  $adminOrder
      * @return \Illuminate\Http\Response
      */
-    public function show(ManageUser $manageUser)
+    public function show(AdminOrder $adminOrder)
     {
         //
     }
@@ -52,10 +58,10 @@ class ManageUserController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\ManageUser  $manageUser
+     * @param  \App\Models\AdminOrder  $adminOrder
      * @return \Illuminate\Http\Response
      */
-    public function edit(ManageUser $manageUser)
+    public function edit(AdminOrder $adminOrder)
     {
         //
     }
@@ -64,10 +70,10 @@ class ManageUserController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\ManageUser  $manageUser
+     * @param  \App\Models\AdminOrder  $adminOrder
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, ManageUser $manageUser)
+    public function update(Request $request, AdminOrder $adminOrder)
     {
         //
     }
@@ -75,10 +81,10 @@ class ManageUserController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\ManageUser  $manageUser
+     * @param  \App\Models\AdminOrder  $adminOrder
      * @return \Illuminate\Http\Response
      */
-    public function destroy(ManageUser $manageUser)
+    public function destroy(AdminOrder $adminOrder)
     {
         //
     }
