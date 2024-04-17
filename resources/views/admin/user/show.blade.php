@@ -1,41 +1,61 @@
 @extends('admin.layouts')
 
 @section('content')
-<div class="row">
-    <div class="col-lg-12" margin-tb>
-        <div class="pull-left">
-            <h2>Show Order</h2>
-        </div>
-        <div class="pull-right">
-            <a class="btn btn-success" href="{{route('admin.index')}}">Back</a>
-        </div>
-    </div>
-</div>
-<div class="row">
-    <div class="col-xs-12 col-sm-12 col-md-12" >
-        <div class="form-group">
-            <strong>ID</strong>{{$manageUser->user_id}}
-        </div>
-    </div>
-    <div class="col-xs-12 col-sm-12 col-md-12" >
-        <div class="form-group">
-            <strong>Name</strong>{{$manageUser->name}}
-        </div>
-    </div>
-    <div class="col-xs-12 col-sm-12 col-md-12" >
-        <div class="form-group">
-            <strong>Password</strong>{{$manageUser->password}}
-        </div>
-    </div>
-    <div class="col-xs-12 col-sm-12 col-md-12" >
-        <div class="form-group">
-            <strong>Phone</strong>{{$manageUser->phone}}
-        </div>
-    </div>
-    <div class="col-xs-12 col-sm-12 col-md-12" >
-        <div class="form-group">
-            <strong>Email</strong>{{$manageUser->email}}
-        </div>
-    </div>
+
+<h2>Show User</h2>
+
+<div class="pull-right">
+    <a class="btn btn-success" href="{{route('home')}}">Back</a>
 </div>
 
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Password</th>
+            <th>Phone</th>
+            <th>Email</th>
+            <th>Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>1</td>
+            <td>John</td>
+            <td>Jhon123</td>
+            <td>0949834389</td>
+            <td>john@example.com</td>
+            <td>
+                <a class="btn btn-success" href="{{route('createProduct')}}"> Create </a>
+                <a class="btn btn-success" href="{{route('editProduct')}}"> Edit </a>
+                <a class="btn btn-success" href="{{route('deleteProduct')}}"> Delete </a>
+            </td>
+        </tr>
+        <tr>
+            <td>2</td>
+            <td>John</td>
+            <td>Jhon123</td>
+            <td>0949834389</td>
+            <td>john@example.com</td>
+            <td>
+                <a class="btn btn-success" href="{{route('createProduct')}}"> Create </a>
+                <a class="btn btn-success" href="{{route('editProduct')}}"> Edit </a>
+                <a class="btn btn-success" href="{{route('deleteProduct')}}"> Delete </a>
+            </td>
+        </tr>
+        <tr>
+            <td>3</td>
+            <td>John</td>
+            <td>Jhon123</td>
+            <td>0949834389</td>
+            <td>john@example.com</td>
+            <td>
+                <a class="btn btn-success" href="{{route('createProduct')}}"> Create </a>
+                <a class="btn btn-success" href="{{route('editProduct')}}"> Edit </a>
+                <a class="btn btn-success" href="{{route('deleteProduct')}}"> Delete </a>
+            </td>
+        </tr>
+    </tbody>
+</table>
+@endsection

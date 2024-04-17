@@ -16,7 +16,21 @@
                         <a class="product-item text-decoration-none" href="{{ route('Detailproduct', ['id' => $product->id]) }}">
                             <img src="{{ asset('images/' . $product->image) }}" class="img-fluid product-thumbnail">
                             <h3 class="product-title">{{ $product->name }}</h3>
-                            <strong class="product-price">{{ $product->price }}</strong>
+                            <div class="price-box">
+                                Pice:
+                                @if ($product->promotion_price != 0)
+                                    <span class="flash-del"
+                                        style="text-decoration: line-through; color: red;">{{ number_format($product->price, 0, '.', ',') }}
+                                        VND</span>
+                                    <span
+                                        class="flash-sale">{{ number_format($product->promotion_price, 0, '.', ',') }}
+                                        VND</span>
+                                @else
+                                    <span>{{ number_format($product->price, 0, '.', ',') }}
+                                        VND</span>
+                                @endif
+
+                            </div>
                         </a>
                     </div>
                     @endif
@@ -30,7 +44,21 @@
                         <a class="product-item text-decoration-none" href="{{ route('Detailproduct', ['id' => $product->id]) }}">
                             <img src="{{ asset('images/' . $product->image) }}" class="img-fluid product-thumbnail">
                             <h3 class="product-title">{{ $product->name }}</h3>
-                            <strong class="product-price">{{ $product->price }}</strong>
+                            <div class="price-box">
+                                Pice:
+                                @if ($product->promotion_price != 0)
+                                    <span class="flash-del"
+                                        style="text-decoration: line-through; color: red;">{{ number_format($product->price, 0, '.', ',') }}
+                                        VND</span>
+                                    <span
+                                        class="flash-sale">{{ number_format($product->promotion_price, 0, '.', ',') }}
+                                        VND</span>
+                                @else
+                                    <span>{{ number_format($product->price, 0, '.', ',') }}
+                                        VND</span>
+                                @endif
+
+                            </div>
                         </a>
                     </div>
                     @endif

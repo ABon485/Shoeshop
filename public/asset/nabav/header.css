@@ -1,12 +1,4 @@
-/* .img_shoes {
-    width: 600px!important;
-    height: 550px!important;
-    
-}
- a{
-    list-style: none;
-    text-decoration: none;
-} */
+
 .title {
     display: flex;
     height: 430px;
@@ -116,3 +108,13 @@
     transform: translateY(-50%);
     color: #999;
   }
+ 
+  .shopping-bag i {
+    /* Các thuộc tính cho phần tử i (icon) bên trong phần tử a */
+    height: 40px;
+    width: 40px;
+    color: #ff0000;
+    font-size: 25px;
+  }
+  
+  
