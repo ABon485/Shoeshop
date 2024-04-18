@@ -7,7 +7,7 @@
             <h2> Edit Product </h2>
         </div>
         <div class="pull-right">
-            <a class="btn btn-success" href="{{route('home')}}">Back</a>
+            <a class="btn btn-success" href="{{route('homeAdmin')}}">Back</a>
         </div>
     </div>
 </div>
