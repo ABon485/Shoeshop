@@ -9,6 +9,7 @@ use  App\Http\Controllers\AdminProductController;
 use  App\Http\Controllers\AdminUserController;
 
 use  App\Http\Controllers\ProductController;
+use  App\Http\Controllers\CheckoutController;
 use App\Http\Controllers\testMomo;
 use GuzzleHttp\Psr7\Request;
 use App\Http\Controllers\FavoriteController;
@@ -54,18 +55,20 @@ Route::get('/get-cart',[CartController::class,'getCart'])->name('cart-page');
 Route::get('/delete-cart/{id}', [CartController::class, 'deleteCart'])->name('delete-cart');
 Route::post('update-to-cart', [CartController::class, 'updateToCart'])->name('update-to-cart');
 
-// Checkout 
+// Hiển thị form confirm Checkout
+Route::get('/checkout', [CartController::class, 'getDataAndRenderView'])->name('checkout');
+
+// Checkout-momo
 Route::get('payUrl',function(){
-    return view('webpage.testMomo');
+    return view('clients.webpage.checkout');
 })-> name('checkout-momo');
 
 Route::post('/payUrl', [testMomo::class,'payment']);
 
+//  Search
+Route::get('/search', [ProductController::class, 'search'])->name('search');
 
-
-
-
-    // Hiển thị danh sách sản phẩm yêu thích của người dùng
+// Hiển thị danh sách sản phẩm yêu thích của người dùng
 
 Route::post('/favorites', [FavoriteController::class, 'index'])->name('favorites.index');
 
@@ -74,12 +77,6 @@ Route::get('/favorite/{product}', [ProductController::class, 'favorite'])->name(
 Route::get('/favorite',[FavoriteController::class,'favorite'])->name('favorite');
 Route::delete('/favorites/{id}', [FavoriteController::class,'destroy'])->name('favorites.destroy');
 
-
-
-//  Search
-Route::get('/search', [ProductController::class, 'search'])->name('search');
-
-
 //=================Route Admin====================
 
 // show home admin
@@ -87,6 +84,10 @@ Route::get('/admin',[AdminOrderController::class,'index'])->name('home');
 
 // show page Order
 Route::get('/showOrder',[AdminOrderController::class,'showOrder'])->name('showOrder');
+// Manage Order
+Route::get('/ordered',[AdminOrderController::class,'ordered']);
+
+
 // show page User
 Route::get('/showUser',[AdminUserController::class,'showUser'])->name('showUser');
 

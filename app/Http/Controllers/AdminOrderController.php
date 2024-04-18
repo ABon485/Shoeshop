@@ -3,23 +3,64 @@
 namespace App\Http\Controllers;
 
 use App\Models\AdminOrder;
+use App\Models\orderedModel;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Session;
 
 class AdminOrderController extends Controller
 {
+    private $orders;
+    public function __construct()
+    {
+        $this->orders = new orderedModel;
+
+    }
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function ordered(Request $request)
     {
-        $manageOrder = "";
-        return view('admin.index');
+        $dataSession = session('cart');
+        $data = $dataSession->items;
+        foreach ($data as $index => $item) {
+            $qty = $item['qty'];
+            $nameProduct = $item['item']->name;
+            dd( $nameProduct);
+
+        }
+        $amount = $_GET['amount'];
+        $message = $_GET['message'];
+
+        if ($message == "Successful.") {
+            orderedModel::create([
+                'quantity' => $qty,
+                'userID' => 1,
+                'productName' => $nameProduct,
+                'total' => $amount,
+                'status' => $message,
+            ]);
+            Session::forget('cart');
+            return view('clients.webpage.successfulOrder');
+        } else {
+            return view('clients.webpage.successfulOrder');
+        }
+
+       
     }
     public function showOrder()
     {
-        $products = "";
+        $allData = orderedModel::all();
+        if (isset($allData['qty'], $allData['price'], $allData['productName'])) {
+            $items[] = [
+                'qty' => $allData['qty'],
+                'price' => $allData['price'],
+                'item' => (object)$allData['item'],
+            ];
+        }
+
+        dd($allData);
         return view('admin.order.show');
     }
 
@@ -50,7 +91,7 @@ class AdminOrderController extends Controller
      * @param  \App\Models\AdminOrder  $adminOrder
      * @return \Illuminate\Http\Response
      */
-    public function show(AdminOrder $adminOrder)
+    public function show(orderedModel $adminOrder)
     {
         //
     }
@@ -61,7 +102,7 @@ class AdminOrderController extends Controller
      * @param  \App\Models\AdminOrder  $adminOrder
      * @return \Illuminate\Http\Response
      */
-    public function edit(AdminOrder $adminOrder)
+    public function edit(orderedModel $adminOrder)
     {
         //
     }
@@ -73,10 +114,14 @@ class AdminOrderController extends Controller
      * @param  \App\Models\AdminOrder  $adminOrder
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, AdminOrder $adminOrder)
+    public function update(Request $request, orderedModel $adminOrder)
     {
-        //
+        $id = $request->id;
+        $value = $request->order_status;
+        $updateStatus = $this->orders->updateStatus($id, $value);
+        return redirect()->route('admin.order.show');
     }
+
 
     /**
      * Remove the specified resource from storage.
@@ -84,7 +129,7 @@ class AdminOrderController extends Controller
      * @param  \App\Models\AdminOrder  $adminOrder
      * @return \Illuminate\Http\Response
      */
-    public function destroy(AdminOrder $adminOrder)
+    public function destroy(orderedModel $adminOrder)
     {
         //
     }

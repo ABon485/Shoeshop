@@ -20,8 +20,27 @@ class CartController extends Controller
         $cart = new Cart($oldCart);
         $cart->add($product, $id);
         $request->session()->put('cart', $cart);
+        // dd($cart);
         
         return redirect()->back()->with('message', 'Add to cart successfully');
+    }
+
+    public function getDataAndRenderView(Request $request)
+    {
+        $sessionData = $request->session()->get('cart');
+        $items = [];
+        
+            foreach ($sessionData->items as $key => $data) {
+                if (isset($data['qty'], $data['price'], $data['item'])) {
+                    $items[$key] = [
+                        'qty' => $data['qty'],
+                        'price' => $data['price'],
+                        'item' => (object)$data['item'],
+                    ];
+                }
+            }
+            // dd( $items );    
+        return view('clients.webpage.checkout', ['items' => $items]);
     }
 
      public function getCart(){
