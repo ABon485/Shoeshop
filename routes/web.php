@@ -82,6 +82,9 @@ Route::delete('/favorites/{id}', [FavoriteController::class,'destroy'])->name('f
 // show home admin
 Route::get('/admin',[AdminUserController::class,'index'])->name('home');
 Route::get('/admin/logout/out',[AuthController::class,'logoutAdmin'])->name('logout.admin');
+Route::get('/admin',[AdminOrderController::class,'index'])->name('homeAdmin');
+
+
 // show page Order
 Route::get('/showOrder',[AdminOrderController::class,'showOrder'])->name('showOrder');
 // Manage Order

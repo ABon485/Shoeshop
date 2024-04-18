@@ -3,7 +3,7 @@
     <h2> DashBoard </h2>
     <nav>
         <ul>
-            <li><a href="#">
+            <li><a href="{{route('homeAdmin')}}">
                     <i class="fas fa-home"></i>
                     <span class="nav-item">Home</span>
                 </a></li>
