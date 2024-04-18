@@ -80,7 +80,7 @@ Route::delete('/favorites/{id}', [FavoriteController::class,'destroy'])->name('f
 //=================Route Admin====================
 
 // show home admin
-Route::get('/admin',[AdminOrderController::class,'index'])->name('home');
+Route::get('/admin',[AdminOrderController::class,'index'])->name('homeAdmin');
 
 // show page Order
 Route::get('/showOrder',[AdminOrderController::class,'showOrder'])->name('showOrder');

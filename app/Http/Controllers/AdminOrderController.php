@@ -20,6 +20,10 @@ class AdminOrderController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
+    public function index(){
+        return view('admin.index');
+    }
     public function ordered(Request $request)
     {
         $dataSession = session('cart');
