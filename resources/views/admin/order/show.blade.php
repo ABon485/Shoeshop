@@ -18,24 +18,31 @@
         </tr>
     </thead>
     <tbody>
+        @foreach ($items as $item)
         <tr>
-            <td>Order_001</td>
-            <td>Nike </td>
-            <td>2</td>
-            <td>User_001</td>
-            <td>456</td>
-            <td>Đã nhận hàng </td>
+            <td>
+                <p> {{ $item['id'] }}</p>
+            </td>
+            <td>
+                <p> {{ $item['productName'] }}</p>
+            </td>
+            <td>
+                <p> {{ $item['quantity'] }}</p>
+            </td>
+            <td>
+                <p> {{ $item['userID'] }}</p>
+            </td>
+            <td>
+                <p> {{ $item['total'] }}</p>
+            </td>
+            <td>
+                <p> {{ $item['status'] }}</p>
+            </td>
         </tr>
-        <tr>
-            <td>Order_002</td>
-            <td>Nike job </td>
-            <td>1</td>
-            <td>User_001</td>
-            <td>456</td>
-            <td>Đã nhận hàng </td>
-        </tr>
-       
-        
+        @endforeach
+
+
+
     </tbody>
 </table>
 @endsection

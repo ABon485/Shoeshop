@@ -13,7 +13,6 @@ class AdminOrderController extends Controller
     public function __construct()
     {
         $this->orders = new orderedModel;
-
     }
     /**
      * Display a listing of the resource.
@@ -21,7 +20,8 @@ class AdminOrderController extends Controller
      * @return \Illuminate\Http\Response
      */
 
-    public function index(){
+    public function index()
+    {
         return view('admin.index');
     }
     public function ordered(Request $request)
@@ -31,8 +31,7 @@ class AdminOrderController extends Controller
         foreach ($data as $index => $item) {
             $qty = $item['qty'];
             $nameProduct = $item['item']->name;
-            dd( $nameProduct);
-
+            dd($nameProduct);
         }
         $amount = $_GET['amount'];
         $message = $_GET['message'];
@@ -50,22 +49,26 @@ class AdminOrderController extends Controller
         } else {
             return view('clients.webpage.successfulOrder');
         }
-
-       
     }
     public function showOrder()
     {
         $allData = orderedModel::all();
-        if (isset($allData['qty'], $allData['price'], $allData['productName'])) {
-            $items[] = [
-                'qty' => $allData['qty'],
-                'price' => $allData['price'],
-                'item' => (object)$allData['item'],
-            ];
-        }
+        $items = [];
 
-        dd($allData);
-        return view('admin.order.show');
+        foreach ($allData as $data) {
+            $itemData = [
+                'id' => $data->id,
+                'productName' => $data->productName,
+                'quantity' => $data->quantity,
+                'userID' => $data-> userID,
+                'total' => $data->total,
+                'status'=> $data->status,
+            ];
+            $items[] = $itemData;
+        }
+        // dd($items);
+        // return view('admin.order.show');
+        return view('admin.order.show', ['items' => $items]);
     }
 
     /**
