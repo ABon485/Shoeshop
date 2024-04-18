@@ -56,7 +56,7 @@ Route::get('/delete-cart/{id}', [CartController::class, 'deleteCart'])->name('de
 Route::post('update-to-cart', [CartController::class, 'updateToCart'])->name('update-to-cart');
 
 // Hiển thị form confirm Checkout
-Route::get('/checkout', [CheckoutController::class, 'getDataFromSession']);
+Route::get('/checkout', [CartController::class, 'getDataAndRenderView'])->name('checkout');
 
 // Checkout-momo
 Route::get('payUrl',function(){
@@ -65,11 +65,10 @@ Route::get('payUrl',function(){
 
 Route::post('/payUrl', [testMomo::class,'payment']);
 
+//  Search
+Route::get('/search', [ProductController::class, 'search'])->name('search');
 
-
-
-
-    // Hiển thị danh sách sản phẩm yêu thích của người dùng
+// Hiển thị danh sách sản phẩm yêu thích của người dùng
 
 Route::post('/favorites', [FavoriteController::class, 'index'])->name('favorites.index');
 
@@ -78,12 +77,6 @@ Route::get('/favorite/{product}', [ProductController::class, 'favorite'])->name(
 Route::get('/favorite',[FavoriteController::class,'favorite'])->name('favorite');
 Route::delete('/favorites/{id}', [FavoriteController::class,'destroy'])->name('favorites.destroy');
 
-
-
-//  Search
-Route::get('/search', [ProductController::class, 'search'])->name('search');
-
-
 //=================Route Admin====================
 
 // show home admin
@@ -91,6 +84,10 @@ Route::get('/admin',[AdminOrderController::class,'index'])->name('home');
 
 // show page Order
 Route::get('/showOrder',[AdminOrderController::class,'showOrder'])->name('showOrder');
+// Manage Order
+Route::get('/ordered',[AdminOrderController::class,'ordered']);
+
+
 // show page User
 Route::get('/showUser',[AdminUserController::class,'showUser'])->name('showUser');
 

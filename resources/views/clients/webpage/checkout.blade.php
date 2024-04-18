@@ -5,147 +5,144 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Checkout-momo</title>
+    <title>Checkout form</title>
     <style>
         body {
-    font-family: 'Roboto', sans-serif!important;
-	margin:0;
-	padding:0;
-	box-sizing: border-box;
-}
+            font-family: 'Roboto', sans-serif !important;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-.mainscreen
-{
-	min-height: 100vh;
-	width: 100%;
-	display: flex;
-    flex-direction: column;
-    background-color: #DFDBE5;
-    background-image: url("https://wallpaperaccess.com/full/3063067.png");
-    color:#963E7B;
-}
+        .mainscreen {
+            min-height: 100vh;
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            background-color: #DFDBE5;
+            background-image: url("https://wallpaperaccess.com/full/3063067.png");
+            color: #963E7B;
+        }
 
-.card {
-	width: 60rem;
-    margin: auto;
-    background: white;
-    position:center;
-    align-self: center;
-    top: 50rem;
-    border-radius: 1.5rem;
-    box-shadow: 4px 3px 20px #3535358c;
-    display:flex;
-    flex-direction: row;
-    
-}
+        .card {
+            width: 60rem;
+            margin: auto;
+            background: white;
+            position: center;
+            align-self: center;
+            top: 50rem;
+            border-radius: 1.5rem;
+            box-shadow: 4px 3px 20px #3535358c;
+            display: flex;
+            flex-direction: row;
 
-.leftside {
-	background: #030303;
-	width: 25rem;
-	display: inline-flex;
-    align-items: center;
-    justify-content: center;
-	border-top-left-radius: 1.5rem;
-    border-bottom-left-radius: 1.5rem;
-}
+        }
 
-.product {
-    object-fit: cover;
-	width: 20em;
-    height: 20em;
-    border-radius: 100%;
-}
+        .leftside {
+            background: #030303;
+            width: 25rem;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            border-top-left-radius: 1.5rem;
+            border-bottom-left-radius: 1.5rem;
+        }
 
-.rightside {
-    background-color: #ffffff;
-	width: 35rem;
-	border-bottom-right-radius: 1.5rem;
-    border-top-right-radius: 1.5rem;
-    padding: 1rem 2rem 3rem 3rem;
-}
+        .product {
+            object-fit: cover;
+            width: 20em;
+            height: 20em;
+            border-radius: 100%;
+        }
 
-p{
-    display:block;
-    font-size: 1.1rem;
-    font-weight: 400;
-    margin: .8rem 0;
-}
+        .rightside {
+            background-color: #ffffff;
+            width: 35rem;
+            border-bottom-right-radius: 1.5rem;
+            border-top-right-radius: 1.5rem;
+            padding: 1rem 2rem 3rem 3rem;
+        }
 
-.inputbox
-{
-    color:#030303;
-	width: 100%;
-    padding: 0.5rem;
-    border: none;
-    border-bottom: 1.5px solid #ccc;
-    margin-bottom: 1rem;
-    border-radius: 0.3rem;
-    font-family: 'Roboto', sans-serif;
-    color: #615a5a;
-    font-size: 1.1rem;
-    font-weight: 500;
-  outline:none;
-}
+        p {
+            display: block;
+            font-size: 1.1rem;
+            font-weight: 400;
+            margin: .8rem 0;
+        }
 
-.expcvv {
-    display:flex;
-    justify-content: space-between;
-    padding-top: 0.6rem;
-}
+        .inputbox {
+            color: #030303;
+            width: 100%;
+            padding: 0.5rem;
+            border: none;
+            border-bottom: 1.5px solid #ccc;
+            margin-bottom: 1rem;
+            border-radius: 0.3rem;
+            font-family: 'Roboto', sans-serif;
+            color: #615a5a;
+            font-size: 1.1rem;
+            font-weight: 500;
+            outline: none;
+        }
 
-.expcvv_text{
-    padding-right: 1rem;
-}
-.expcvv_text2{
-    padding:0 1rem;
-}
+        .expcvv {
+            display: flex;
+            justify-content: space-between;
+            padding-top: 0.6rem;
+        }
 
-.button{
-    background: linear-gradient(
-135deg
-, #753370 0%, #298096 100%);
-    padding: 15px;
-    border: none;
-    border-radius: 50px;
-    color: white;
-    font-weight: 400;
-    font-size: 1.2rem;
-    margin-top: 10px;
-    width:100%;
-    letter-spacing: .11rem;
-    outline:none;
-}
+        .expcvv_text {
+            padding-right: 1rem;
+        }
 
-.button:hover
-{
-	transform: scale(1.05) translateY(-3px);
-    box-shadow: 3px 3px 6px #38373785;
-}
+        .expcvv_text2 {
+            padding: 0 1rem;
+        }
 
-@media only screen and (max-width: 1000px) {
-    .card{
-        flex-direction: column;
-        width: auto;
-      
-    }
+        .submit {
+            background: linear-gradient(135deg, #753370 0%, #298096 100%);
+            padding: 15px;
+            border: none;
+            border-radius: 50px;
+            color: white;
+            font-weight: 400;
+            font-size: 1.2rem;
+            margin-top: 10px;
+            width: 100%;
+            letter-spacing: .11rem;
+            outline: none;
+        }
 
-    .leftside{
-        width: 100%;
-        border-top-right-radius: 0;
-        border-bottom-left-radius: 0;
-      border-top-right-radius:0;
-      border-radius:0;
-    }
+        .button:hover {
+            transform: scale(1.05) translateY(-3px);
+            box-shadow: 3px 3px 6px #38373785;
+        }
 
-    .rightside{
-        width:auto;
-        border-bottom-left-radius: 1.5rem;
-        padding:0.5rem 3rem 3rem 2rem;
-      border-radius:0;
-    }
-}
+        @media only screen and (max-width: 1000px) {
+            .card {
+                flex-direction: column;
+                width: auto;
+
+            }
+
+            .leftside {
+                width: 100%;
+                border-top-right-radius: 0;
+                border-bottom-left-radius: 0;
+                border-top-right-radius: 0;
+                border-radius: 0;
+            }
+
+            .rightside {
+                width: auto;
+                border-bottom-left-radius: 1.5rem;
+                padding: 0.5rem 3rem 3rem 2rem;
+                border-radius: 0;
+            }
+        }
     </style>
 </head>
+
 <body>
     <div class="mainscreen">
         <div class="card">
@@ -158,17 +155,22 @@ p{
                     @csrf
                     <h1>CheckOut</h1>
                     <h2>Payment Information</h2>
-                    <p>Name product: </p>
-                    {{-- {{ $data['name'] }} --}}
-                    <p>Quantity: </p>
-                    {{-- {{ $data['quantity'] }} --}}
-                    <p>Total price: </p> 
-                    {{-- {{ $data['total_price'] }} --}}
-                    <input type="number" name="price">
-                     {{-- value="{{ $data['total_price'] }}" --}}
-                    <button class="btn btn-primary" type="submit" name="payUrl" id="momo">submit</button>
+                    @foreach ($items as $item)
+                    <p>Name product: <b>{{ $item['item']->name }}</b></p>
+                    <p>Size product: <b>{{ $item['item']->size }}</b></p>
+                    <p>Quantity: <b>{{ $item['qty'] }}</b></p>
+                    <p>Image: 
+                        <img src="{{ asset('images/' . $item['item']->image) }}" alt="" style="width: 200px; height: 200px;">
+                    </p>
+                                        
+                    <p>Total price: </p>
+                    {{-- <b>{{ $item['price'] }}</b> --}}
+                    <input type="number" name="price" value="{{ $item['price'] }}">
+                    
+                    {{-- <input type="hidden" name="product_id[]" value="{{ $item['item']->id }}"> --}}
+                    @endforeach
+                    <button class="submit" type="submit" name="payUrl" id="momo">Submit</button>
                 </form>
-                
             </div>
         </div>
     </div>

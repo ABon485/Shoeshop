@@ -31,7 +31,7 @@ class testMomo extends Controller
     }
     public function payment(Request $request)
     {
-        // dd($request->price);
+        dd($request);
         $endpoint = "https://test-payment.momo.vn/v2/gateway/api/create";
         $partnerCode = 'MOMOBKUN20180529';
         $accessKey = "klm05TvNBzhg7h7j";
@@ -78,7 +78,7 @@ class testMomo extends Controller
         if (isset($jsonResult['payUrl'])) {
             return redirect()->away($jsonResult['payUrl']);
         } else {
-            return redirect('/cart?err=true');
+            return redirect()->back();
         }
     }
 }
