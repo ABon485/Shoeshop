@@ -10,41 +10,39 @@
     <thead>
         <tr>
             <th>ID</th>
-            <th>Total</th>
-            <th>Status</th>
-            <th>Name</th>
-            <th>Product_id</th>
+            <th>Product Name</th>
+            <th>Quantity</th>
             <th>User_id</th>
+            <th>Total price</th>
+            <th>Status</th>
         </tr>
     </thead>
     <tbody>
+        @foreach ($items as $item)
         <tr>
-            <td>Order_001</td>
-            <td>600</td>
-            <td>Đã nhận hàng </td>
-            <td>Doe</td>
-            <td>Prduct_001</td>
-            <td>User_002</td>
+            <td>
+                <p> {{ $item['id'] }}</p>
+            </td>
+            <td>
+                <p> {{ $item['productName'] }}</p>
+            </td>
+            <td>
+                <p> {{ $item['quantity'] }}</p>
+            </td>
+            <td>
+                <p> {{ $item['userID'] }}</p>
+            </td>
+            <td>
+                <p> {{ $item['total'] }}</p>
+            </td>
+            <td>
+                <p> {{ $item['status'] }}</p>
+            </td>
         </tr>
-        <tr>
-            <td>Order_002</td>
-            <td>600</td>
-            <td>Đã nhận hàng </td>
-            <td>Doe</td>
-            <td>Prduct_003</td>
-            <td>User_002</td>
-        </tr>
-        <tr>
-            <td>Order_003</td>
-            <td>600</td>
-            <td>Đã nhận hàng </td>
-            <td>Doe</td>
-            <td>Prduct_005</td>
-            <td>User_001</td>
-        </tr>
+        @endforeach
+
+
+
     </tbody>
 </table>
-   
-   
-
 @endsection

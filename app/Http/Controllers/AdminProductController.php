@@ -30,8 +30,8 @@ class AdminProductController extends Controller
         $validatedData = $request->validate([
             'name' => 'required|max:255',
             'description' => 'required|max:255',
-            'price' => 'required|numeric',
-            'promotion_price' => 'required|numeric',
+            'price' => 'required|numeric|max:9999999999',
+            'promotion_price' => 'required|numeric|max:9999999999',
             'size' => 'required|max:255',
             'quantity' => 'required|integer',
             'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
@@ -55,7 +55,7 @@ class AdminProductController extends Controller
         $product->quantity = $request->quantity;
         $product->category = $request->category;
         $product->save();
-        // dd($resuft);
+        // dd($product);
 
         session()->flash('success', 'Thêm sản phẩm  thành công!');
         return redirect()->route('showProduct');
@@ -82,8 +82,8 @@ class AdminProductController extends Controller
                 'name' => 'required|string',
                 'description' => 'required|string',
                 'image' => 'image|mimes:jpeg,png,jpg,gif|max:2048',
-                'price' => 'required|numeric',
-                'promotion_price' => 'nullable|numeric',
+                'price' => 'required|numeric|max:9999999999',
+                'promotion_price' => 'required|numeric|max:9999999999',
                 'size' => 'required|string',
                 'quantity' => 'required|integer',
                 'category' => 'required|string'
@@ -126,52 +126,4 @@ class AdminProductController extends Controller
         return redirect()->route('showProduct');
     }
 
-
-
-    // public function update(Request $request, string $id)
-    // {
-    //     $product = Product::find($id);
-    //     // dd($product);
-    //     $validateData = Validator::make(
-    //         $request->all(),
-    //         [
-    //             'name' => 'required|string',
-    //             'description' => 'required|string',
-    //             'image' => 'image|mimes:jpeg,png,jpg,gif|max:2048',
-    //             'price' => 'required|numeric',
-    //             'promotion_price' => 'nullable|numeric',
-    //             'size' => 'required|string',
-    //             'quantity' => 'required|integer',
-    //             'category' => 'required|string'
-    //         ]
-    //     );
-
-    //     if ($validateData->fails()) {
-    //         return redirect()->back()->withErrors($validateData)->withInput();
-    //     }
-    //     if ($request->hasFile('image')) {
-    //         $image_path = public_path("images/{$product->image}");
-
-    //         if (File::exists($image_path)) {
-    //             File::delete($image_path);
-    //         }
-    //         $image = $request->file('image');
-    //         $imageName = time() . '_' . $image->getClientOriginalName();
-    //         $image->move(public_path('images'), $imageName);
-            
-    //     }
-    //     $update = AdminProduct::update([
-    //         'description '=> $request->description,
-    //         'image' => $imageName,
-    //         'name' => $request->name,
-    //         'price' => $request->price,
-    //         'promotion_price' => $request->promotion_price,
-    //         'size' => $request->size,
-    //         'quantity' => $request->quantity,
-    //         'category'=> $request->category
-    //     ]);
-    //     dd($update);
-    //     // dd($product);
-    //     return redirect()->back()->with('status', 'Cập nhật sản phẩm thành công.');
-    // }
 }

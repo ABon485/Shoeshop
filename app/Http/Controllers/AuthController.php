@@ -4,8 +4,10 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\User;
+use Illuminate\Auth\Events\Logout;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Validator;
 
 
@@ -54,15 +56,29 @@ class AuthController extends Controller
 
     function postLogin(Request $request)
     {
+        $users = User::all();
+
+        // In thông tin của từng user
+        
         if (Auth::attempt(['email' => $request->email, 'password' => $request->password])) {
+            foreach ($users as $user) {
+                if($user->role == "1" && $request->email == $user->email){
+                    return redirect("/admin");
+                }
+            }
             return redirect("/");
         }
 
         return redirect()->back()->with('error', 'sai can nhap lai');
     }
-    function logout(Request $request)
+    public function logout()
     {
+        Auth::logout();
+        return redirect('/');
+    }
 
+    function logoutAdmin()
+    {   
         Auth::logout();
         return redirect('/');
     }

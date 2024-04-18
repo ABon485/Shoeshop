@@ -1,5 +1,11 @@
 @extends('clients.nabav.layout')
 @section('content')
+    @if ($message = Session::get('success'))
+        <div class="alert alert-success alert-dismissible fade show" role="alert">
+            {{ $message }}
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+    @endif
     <div class="container title mt-5">
         <div class="row">
             <div class="col-6 mt-5">
@@ -30,7 +36,7 @@
     </div>
 
     <div class="trending">
-        <h4>Trending Now</h4>
+        <h3 class="pl-lg-5">Trending Now</h3>
         <div class="overflow-auto">
             <!-- Slider1 -->
             <div id="mySwiper" class="pb-1">
@@ -40,14 +46,32 @@
                         @if ($count < 4)
                             <div class="col-6">
                                 <div class="card" style="width: 18rem;">
+                                    <span></span>
                                     <a class="product-item text-decoration-none"
                                         href="{{ route('Detailproduct', ['id' => $product->id]) }}">
                                         <img src="{{ asset('images/' . $product->image) }}"
                                             class="card-img-top img-fluid product-thumbnail">
-                                        <div class="card-body mt-3 ml-3">
-                                            <a class="text-decoration-none"
-                                                href="{{ route('Detailproduct', ['id' => $product->id]) }}">View all</a>
-                                        </div>
+                                        <a class="text-decoration-none"
+                                            href="{{ route('Detailproduct', ['id' => $product->id]) }} "
+                                            style="height: 50px";>View all</a>
+                                        @if (auth('web')->check())
+                                            <div class="card-body mt- ml-3">
+                                                @if ($product->favorited)
+                                                    <a title="bo thich"
+                                                        onclick="return confirm('ban co muon bo thich khong ')"
+                                                        href="{{ route('webpage.favorite', $product->id) }}"><i
+                                                            class=" heart1 fa fa-heart"
+                                                            style="color: rgb(163, 144, 144); font-size: 20px; margin-left:50px;"
+                                                            aria-hidden="true"></i></a>
+                                                @else
+                                                    <a title="yeu thich"
+                                                        href="{{ route('webpage.favorite', $product->id) }}"><i
+                                                            class=" heart2 fa fa-heart"
+                                                            style="color: red; font-size: 20px; margin-left:150px;"
+                                                            aria-hidden="true"></i></a>
+                                                @endif
+                                            </div>
+                                        @endif
                                     </a>
                                 </div>
                             </div>
@@ -59,31 +83,36 @@
         </div>
     </div>
 
-    <div class="trending">
-        <h4>Sản Phẩm Khuyến Mãi</h4>
+    <div id="trending" class="trending">
+        <h3 class="pl-lg-5">Promotional Products</h3>
         <div class="overflow-auto">
             <!-- Slider1 -->
             <div id="mySwiper" class="pb-1">
-                <div class="col-6 m-lg-4 d-flex">
+                <div class="row">
                     @php $count = 0; @endphp
                     @foreach ($products as $product)
-                        @if ($count >= 5 && $product->promotion_price > 0)
-                            <div class="col-6">
-                                <div class="card" style="width: 18rem;">
-                                    <a class="product-item text-decoration-none"
-                                        href="{{ route('Detailproduct', ['id' => $product->id]) }}">
-                                        <img src="{{ asset('images/' . $product->image) }}"
-                                            class="card-img-top img-fluid product-thumbnail">
-                                        <div class="card-body mt-3 ml-3">
-                                            <a class="text-decoration-none"
-                                                href="{{ route('Detailproduct', ['id' => $product->id]) }}">View all</a>
-                                        </div>
-                                    </a>
-                                </div>
+                        @if ($count < 8)
+                            <div class="col-6 col-md-4 col-lg-3 mb-5">
+                                <a class="product-item text-decoration-none" href="{{ route('Detailproduct', ['id' => $product->id]) }}">
+                                    <img src="{{ asset('images/' . $product->image) }}" class="img-fluid product-thumbnail m-lg-4 ml-6">
+                                    <h3 class="product-title m-lg-4">{{ $product->name }}</h3>
+                                    <div class="price-box m-lg-4">
+                                        Price:
+                                        @if ($product->promotion_price != 0)
+                                            <span class="flash-del m-lg-4" style="text-decoration: line-through; color: red;">{{ number_format($product->price, 0, '.', ',') }} VND</span>
+                                            <span class="flash-sale">{{ number_format($product->promotion_price, 0, '.', ',') }} VND</span>
+                                        @else
+                                            <span>{{ number_format($product->price, 0, '.', ',') }} VND</span>
+                                        @endif
+                                    </div>
+                                </a>
                             </div>
+                            @php $count++; @endphp
+                            @if ($count % 4 == 0)
+                                <div class="w-100"></div>
+                            @endif
                         @endif
-                        @php $count++; @endphp
-                    @endforeach
+                    @endforeach 
                 </div>
             </div>
         </div>
@@ -91,7 +120,7 @@
     <div class="row">
         <div class="row text-center">
             <div class="d-flex " style="padding-left: 350px">
-                <h4>We provide the best customer experiences</h4>
+                <h3>We provide the best customer experiences</h3>
             </div>
         </div>
 
