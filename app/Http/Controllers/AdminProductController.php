@@ -42,6 +42,7 @@ class AdminProductController extends Controller
     public function store(Request $request)
     {
         //
+        
     }
 
     /**
