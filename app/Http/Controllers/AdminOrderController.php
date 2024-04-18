@@ -13,7 +13,6 @@ class AdminOrderController extends Controller
     public function __construct()
     {
         $this->orders = new orderedModel;
-
     }
     /**
      * Display a listing of the resource.
@@ -21,7 +20,8 @@ class AdminOrderController extends Controller
      * @return \Illuminate\Http\Response
      */
 
-    public function index(){
+    public function index()
+    {
         return view('admin.index');
     }
     public function ordered(Request $request)
@@ -31,7 +31,6 @@ class AdminOrderController extends Controller
         foreach ($data as $index => $item) {
             $qty = $item['qty'];
             $nameProduct = $item['item']->name;
-            // dd( $nameProduct);
 
         }
         $amount = $_GET['amount'];
@@ -50,8 +49,6 @@ class AdminOrderController extends Controller
         } else {
             return view('clients.webpage.successfulOrder');
         }
-
-       
     }
    public function showOrder()
     {
