@@ -1,12 +1,12 @@
 @extends('admin.layouts')
 
 @section('content')
-<div class="container d-flex flex-column pt-5">
+<div class="p-lg-5 d-flex flex-column pt-5">
     
 <h2>Show Product</h2>
 
 
-<div class="container d-flex flex-row align-items-center  p-2 pb-4 row">
+<div class="d-flex flex-row align-items-center  p-2 pb-4 row">
     <div class="col-2">
         <a class="btn btn-success justify-content-start" href="{{ route('createProduct') }}">Create</a>
     </div>
@@ -25,6 +25,7 @@
             <th>Name</th>
             <th>Description</th>
             <th>Price</th>
+            <th>Promotion_price</th>
             <th>Size</th>
             <th>Quantity</th>
             <th>Action</th>
@@ -40,12 +41,13 @@
                     <td>{{ $product->name }}</td>
                     <td>{{ $product->description }}</td>
                     <td>{{ $product->price }}</td>
-                    <td>{{ $product->Size }}</td>
+                    <td>{{ $product->promotion_price}}</td>
+                    <td>{{ $product->size }}</td>
                     <td>{{ $product->quantity}}</td>
                     <td>{{ $product->Size }}</td>
-                    <td><a class="btn btn-success" href="{{route('editProduct')}}"> Edit </a>
+                    <td><a class="btn btn-success" href="{{route('editProduct',$product->id)}}"> Edit </a>
                     </td>
-                    <td><a class="btn btn-success" href="{{route('deleteProduct')}}"> Delete </a>
+                    <td><a class="btn btn-success" href="{{route('deleteProduct',$product->id)}}"> Delete </a>
                     </td>
                 </tr>
             @endforeach

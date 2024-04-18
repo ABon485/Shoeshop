@@ -1,5 +1,6 @@
 @extends('clients.nabav.layout')   
 @section('banner')
+    
 <meta name="csrf-token" content="{{ csrf_token() }}">
 <div class="inner-header">
     <div class="container">
@@ -39,8 +40,10 @@
                                     <span class="amount">
                                         @if($product['item']['promotion_price'] != 0)
                                             {{ number_format($product['item']['promotion_price']) }}
+                                            <input type="number" class="prod-input" name="productId" value="{{ ($product['item']['promotion_price']) }}" style="display: none">
                                         @else 
                                             {{ number_format($product['item']['unit_price']) }}
+                                            <input type="number" class="prod-input" name="productId" value="{{ ($product['item']['unit_price']) }}" style="display: none">
                                         @endif
                                     </span>
                                 </td>
@@ -50,21 +53,63 @@
                                         <div class="input-group-prepend decrement-btn changeQuantity" style="cursor: pointer">
                                             <span class="input-group-text">-</span>
                                         </div>
-                                        <input type="text" class="qty-input form-control" maxlength="2" max="10" value="{{ $product['qty'] }}">
+                                        <input type="number" class="qty-input form-control" maxlength="2" max="10" value="1" name="qty" id="qty">
                                         <div class="input-group-append increment-btn changeQuantity" style="cursor: pointer">
                                             <span class="input-group-text">+</span>
                                         </div>
+                                        <script>
+                                            // Lấy thẻ input và các nút tăng/giảm số lượng
+                                            var qtyInput = document.querySelector('.qty-input');
+                                            var changeQuantityBtns = document.querySelectorAll('.changeQuantity');
+                                        
+                                            // Xử lý sự kiện click nút giảm hoặc tăng số lượng
+                                            changeQuantityBtns.forEach(function(btn) {
+                                                btn.addEventListener('click', function() {
+                                                    var currentValue = parseInt(qtyInput.value);
+                                                    var maxValue = parseInt(qtyInput.getAttribute('max'));
+                                        
+                                                    if (btn.classList.contains('decrement-btn')) {
+                                                        // Nếu là nút giảm số lượng
+                                                        if (currentValue > 1) {
+                                                            qtyInput.value = currentValue - 1;
+                                                        }
+                                                    } else if (btn.classList.contains('increment-btn')) {
+                                                        // Nếu là nút tăng số lượng
+                                                        if (currentValue < maxValue) {
+                                                            qtyInput.value = currentValue + 1;
+                                                        }
+                                                    }
+                                                });
+                                            });
+                                        </script>
                                     </div>
                                 </td>
                                 <td class="product-remove">
                                     <a href="{{ route('delete-cart', $product['item']['id']) }}" class="remove" title="Remove this item"><i class="fa fa-trash-o"></i></a>
                                     <div class="col-md-4 mt-5">
-                                        <a href="{{ route('checkout-momo') }}" class="btn btn-success">
+                                        {{-- <a href="{{ route('checkout-momo') }}" class="btn btn-success">
                                             Buy now
-                                        </a>
+                                        </a> --}}
+                                        <input type="number" class="prod-id" name="productId" value="{{ $product['item']['id'] }}" style="display: none">
+                                        <button onclick="checkoutForm()">Buy Now</button>
+                                        <script>
+                                            function checkoutForm() {
+                                                let qtyInput = document.querySelector('.qty-input');
+                                                let qtyValue = qtyInput.value;
+                                                let price = document.querySelector('.prod-input').value;
+                                                let productId = document.querySelector('.prod-id').value;
+                                                // Thực hiện các hành động liên quan đến việc thanh toán, chẳng hạn như gửi dữ liệu số lượng đến URL hoặc xử lý form.
+                                                // Ở đây, chúng ta chỉ đoạn mã JavaScript để lấy giá trị số lượng và in ra console.
+                                                console.log('Số lượng:', qtyValue);
+                                                const url = 'payUrl?qty=' + qtyValue + '&price=' + price + '&productId=' + productId;
+
+                                                // Chuyển hướng đến URL đã được chỉnh sửa
+                                                window.location.href = url;
+                                            }
+                                        </script>
+                                        
                                     </div>
                                 </td>
-                                td
                            
                             </tr>
                         @endforeach
@@ -81,45 +126,5 @@
         integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+" crossorigin="anonymous">
     </script>
 </div>
-<script>
-    document.addEventListener('DOMContentLoaded', function() {
-  // Lấy tất cả các phần tử quantity-group trên trang
-  const quantityGroups = document.querySelectorAll('.quantity-group');
 
-  // Lặp qua từng quantity-group và gán bộ xử lý sự kiện cho nút + và -
-  quantityGroups.forEach(function(quantityGroup) {
-    const decrementBtn = quantityGroup.querySelector('.decrement-btn');
-    const incrementBtn = quantityGroup.querySelector('.increment-btn');
-    const qtyInput = quantityGroup.querySelector('.qty-input');
-    const amountSpan = quantityGroup.closest('tr').querySelector('.amount');
-
-    // Bộ xử lý sự kiện khi nhấp vào nút -
-    decrementBtn.addEventListener('click', function() {
-      let quantity = parseInt(qtyInput.value);
-      if (quantity > 1) {
-        quantity--;
-        qtyInput.value = quantity;
-        updatePrice(quantity);
-      }
-    });
-
-    // Bộ xử lý sự kiện khi nhấp vào nút +
-    incrementBtn.addEventListener('click', function() {
-      let quantity = parseInt(qtyInput.value);
-      if (quantity < 10) {
-        quantity++;
-        qtyInput.value = quantity;
-        updatePrice(quantity);
-      }
-    });
-
-    // Hàm cập nhật giá trị
-    function updatePrice(quantity) {
-      const price = parseFloat(amountSpan.dataset.price);
-      const totalPrice = price * quantity;
-      amountSpan.textContent = totalPrice.toFixed(2);
-    }
-  });
-});
-</script>
 @endsection

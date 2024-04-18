@@ -8,6 +8,7 @@ use App\Models\Product;
 
 class Cart extends Model
 {
+	protected $fillable = ['items', 'totalPrice', 'totalQty'];
 	public $items = null;  //$items là mảng liên hợp, cụ thể $items=array("product_id"=>array("qty","price","item")); ->item lại là 1 mảng Product
 	public $totalQty = 0;
 	public $totalPrice = 0;

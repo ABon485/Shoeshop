@@ -52,9 +52,7 @@ Route::get('/delete-cart/{id}', [CartController::class, 'deleteCart'])->name('de
 Route::post('update-to-cart', [CartController::class, 'updateToCart'])->name('update-to-cart');
 
 // Checkout 
-Route::get('payUrl',function(){
-    return view('webpage.testMomo');
-})-> name('checkout-momo');
+Route::get('payUrl',[testMomo::class,'formCheckout'])-> name('checkout-momo');
 
 Route::post('/payUrl', [testMomo::class,'payment']);
 //  Search
@@ -62,7 +60,6 @@ Route::get('/search', [ProductController::class, 'search'])->name('search');
 
 
 //=================Route Admin====================
-
 // show home admin
 Route::get('/admin',[AdminOrderController::class,'index'])->name('adminHome');
 
@@ -76,12 +73,12 @@ Route::get('/showProduct',[AdminProductController::class,'index'])->name('showPr
 // show page form create product
 Route::get('/createProduct',[AdminProductController::class,'create'])->name('createProduct');
 
-Route::p('/Product',[AdminProductController::class,'store'])->name('Product.store');
+Route::post('/createProduct',[AdminProductController::class,'store'])->name('Product.store');
 
 // show page form edit product
-Route::get('/editProduct',[AdminProductController::class,'edit'])->name('editProduct');
+Route::get('/Product/{id}/edit',[AdminProductController::class,'edit'])->name('editProduct');
 
-Route::get('/updateProduct',[AdminProductController::class,'update'])->name('updateProduct');
+Route::put('/Product/{id}/update', [AdminProductController::class, 'update'])->name('updateProduct');
 
 // show page form delete product
-Route::get('/deleteProduct',[AdminProductController::class,'destroy'])->name('deleteProduct');
+Route::get('/deleteProduct/{id}',[AdminProductController::class,'destroy'])->name('deleteProduct');

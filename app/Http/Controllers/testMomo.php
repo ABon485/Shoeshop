@@ -2,11 +2,20 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Product;
 use Illuminate\Http\Request;
 
 class testMomo extends Controller
 {
-    
+    function formCheckout(Request $request){
+        $qty = $request->input('qty');
+        $productId = $request->input('productId');
+        $prod = Product::find($productId);
+        $price = $request->input('price');
+        $total = $price * $qty;
+        return view('clients.webpage.testMomo',
+        ['total'=>$total, 'prod'=>$prod, 'qty'=>$qty]);
+    }
     public function execPostRequest($url, $data)
         {
             $ch = curl_init($url);

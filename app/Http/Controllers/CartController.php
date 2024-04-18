@@ -14,15 +14,17 @@ class CartController extends Controller
     public $cart;
     public function addToCart(Request $request, $id)
     {
-
         $product = Product::find($id);
-        // dd($product);
-        $oldCart = Session('cart') ? Session::get('cart') : null;
-        $cart = new Cart($oldCart);
-        $cart->add($product, $id);
-        $request->session()->put('cart', $cart);
-
-        return redirect()->back()->with('message', 'Add to cart successfully');
+    
+        if (!$product) {
+            return redirect()->back()->with('message', 'Product not found');
+        }
+    
+        $oldCart = $request->session()->has('cart') ? $request->session()->get('cart') : new Cart();
+        $oldCart->add($product, $id);
+        $request->session()->put('cart', $oldCart);
+    
+        return redirect()->back()->with('message', 'Added to cart successfully');
     }
 
     public function getCart()

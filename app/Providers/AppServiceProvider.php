@@ -26,14 +26,20 @@ class AppServiceProvider extends ServiceProvider
      * @return void
      */
     public function boot()
-    {
-        View::composer(['clients/webpage/cart'],function($view){
-            if(Session('cart')){
-                $oldCart=Session::get('cart'); //session cart được tạo trong method addToCart của PageController
-                $cart=new Cart($oldCart);
-                $view->with(['cart'=>Session::get('cart'),'productCarts'=>$cart->items,'totalPrice'=>$cart->totalPrice,'totalQty'=>$cart->totalQty]);
-            }
-        });
+{
+    View::composer(['clients/webpage/cart'], function($view) {
+        if (session()->has('cart')) {
+            $oldCart = session()->get('cart');
+            
+         
+            $view->with([
+                'cart' => $oldCart, 
+                'productCarts' => $oldCart->items,
+                'totalPrice' => $oldCart->totalPrice,
+                'totalQty' => $oldCart->totalQty
+            ]);
+        }
+    });
+}
 
-    }
 }

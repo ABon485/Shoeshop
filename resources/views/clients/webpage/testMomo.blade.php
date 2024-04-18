@@ -179,7 +179,7 @@ p{
                         <input type="password" class="inputbox" name="cvv" id="cvv" placeholder="cvv" required />
                     </div>
                     <p></p>
-                    <input type="number" value="500000" name="price">
+                    <input type="number" value="{{$total}}" name="price">
                     <button type="submit" name="payUrl" id="momo">submit</button>
                 </form>
             </div>

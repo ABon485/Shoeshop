@@ -8,7 +8,7 @@
                 <a class="tablinks " onclick="openTabs(event,'tab_21')"><h4>Men</h4></a>
                 <a class="tablinks " onclick="openTabs(event,'tab_19')"><h4>Women</h4></a>
             </div>
-            <div class="container">
+            <div class="m-lg-5 row">
                 <div class="row list-product" id="tab_21">
                     @foreach ($products as $product)
                     @if ($product->category == "Men")
@@ -40,7 +40,7 @@
                 <div class="row list-product" id="tab_19">
                     @foreach ($products as $product) 
                     @if ($product->category == "Women")
-                    <div class="col-4 col-md-4 col-lg-3 mb-5">
+                    <div class="col-6 col-md-4 col-lg-3 mb-5">
                         <a class="product-item text-decoration-none" href="{{ route('Detailproduct', ['id' => $product->id]) }}">
                             <img src="{{ asset('images/' . $product->image) }}" class="img-fluid product-thumbnail">
                             <h3 class="product-title">{{ $product->name }}</h3>

@@ -58,6 +58,36 @@
             </div>
         </div>
     </div>
+
+    <div class="trending">
+        <h4>Sản Phẩm Khuyến Mãi</h4>
+        <div class="overflow-auto">
+            <!-- Slider1 -->
+            <div id="mySwiper" class="pb-1">
+                <div class="col-6 m-lg-4 d-flex">
+                    @php $count = 0; @endphp
+                    @foreach ($products as $product)
+                        @if ($count >= 5 && $product->promotion_price > 0)
+                            <div class="col-6">
+                                <div class="card" style="width: 18rem;">
+                                    <a class="product-item text-decoration-none"
+                                        href="{{ route('Detailproduct', ['id' => $product->id]) }}">
+                                        <img src="{{ asset('images/' . $product->image) }}"
+                                            class="card-img-top img-fluid product-thumbnail">
+                                        <div class="card-body mt-3 ml-3">
+                                            <a class="text-decoration-none"
+                                                href="{{ route('Detailproduct', ['id' => $product->id]) }}">View all</a>
+                                        </div>
+                                    </a>
+                                </div>
+                            </div>
+                        @endif
+                        @php $count++; @endphp
+                    @endforeach
+                </div>
+            </div>
+        </div>
+    </div>
     <div class="row">
         <div class="row text-center">
             <div class="d-flex " style="padding-left: 350px">

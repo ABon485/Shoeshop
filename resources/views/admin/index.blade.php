@@ -21,7 +21,7 @@
             </a></li>
         <li><a href="{{route('home')}}" class="logout">
                 <i class="fas fa-sign-out-alt"></i>
-                <span class="nav-item">Log out</span>
+                <span class="nav-item mt-5">Log out</span>
             </a></li>
     </ul>
 </nav>
