@@ -80,8 +80,8 @@ Route::delete('/favorites/{id}', [FavoriteController::class,'destroy'])->name('f
 //=================Route Admin====================
 
 // show home admin
-Route::get('/admin',[AdminOrderController::class,'index'])->name('home');
-
+Route::get('/admin',[AdminUserController::class,'index'])->name('home');
+Route::get('/admin/logout/out',[AuthController::class,'logoutAdmin'])->name('logout.admin');
 // show page Order
 Route::get('/showOrder',[AdminOrderController::class,'showOrder'])->name('showOrder');
 // Manage Order
@@ -89,7 +89,6 @@ Route::get('/ordered',[AdminOrderController::class,'ordered']);
 
 
 // show page User
-Route::get('/showUser',[AdminUserController::class,'showUser'])->name('showUser');
 
 // show page Product
 Route::get('/showProduct',[AdminProductController::class,'showProduct'])->name('showProduct');
@@ -99,4 +98,13 @@ Route::get('/createProduct',[AdminProductController::class,'create'])->name('cre
 Route::get('/editProduct',[AdminProductController::class,'edit'])->name('editProduct');
 // show page form delete product
 Route::get('/deleteProduct',[AdminProductController::class,'delete'])->name('deleteProduct');
+
+Route::get('/showUser',[AdminUserController::class,'showUser'])->name('index');
+Route::get('/edit/{id}',[AdminUserController::class,'edit'])->name('edit');
+Route::post('/edit/{id}',[AdminUserController::class,'update'])->name('update');
+Route::get('/destroy/{id}',[AdminUserController::class,'destroy'])->name('destroy');
+Route::get('/showUser/{id}',[AdminUserController::class,'show'])->name('show');
+
+
+
 

@@ -2,8 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\AdminUser;
+use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class AdminUserController extends Controller
 {
@@ -14,21 +15,29 @@ class AdminUserController extends Controller
      */
     public function index()
     {
-        //
-    }
-    public function showUser()
-    {
-        return view('admin.user.show');
+        $users = User::all();
+        return view('admin.index', ["users" => $users]);
     }
 
+    public function showUser()
+    {
+        $users = User::all();
+        return view('admin.user.show', ["users" => $users]);
+    }
     /**
      * Show the form for creating a new resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function edit($id)
     {
+        // Tìm đến đối tượng muốn update
+        $user = User::findOrFail($id);
+
+        // điều hướng đến view edit user và truyền sang dữ liệu về user muốn sửa đổi
+
         //
+        return view('admin.user.edit', compact('user'));
     }
 
     /**
@@ -42,48 +51,46 @@ class AdminUserController extends Controller
         //
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\AdminUser  $adminUser
-     * @return \Illuminate\Http\Response
-     */
-    public function show(AdminUser $adminUser)
+    public function update(Request $request, $id)
     {
-        //
+        // Validate request data
+        $validatedData = $request->validate([
+            'name' => 'required|string|max:255',
+            'email' => 'required|email|unique:users,email,' . $id,
+            'password' => 'nullable|string|min:6',
+        ]);
+
+        // Find the user by ID
+        $user = User::findOrFail($id);
+
+        // Update name and email
+        $user->name = $request->name;
+        $user->email = $request->email;
+
+        // Update password if provided
+        if ($request->has('password')) {
+            $user->password = bcrypt($request->password);
+        }
+
+        // Save changes
+        $user->save();
+
+        // Redirect or return a response
+        return redirect('/showUser')->with('success', 'User updated successfully');
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\AdminUser  $adminUser
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(AdminUser $adminUser)
-    {
-        //
-    }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\AdminUser  $adminUser
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, AdminUser $adminUser)
-    {
-        //
-    }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\AdminUser  $adminUser
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(AdminUser $adminUser)
+
+    public function destroy($id)
     {
-        //
+        // Find the user by ID
+        $user = User::findOrFail($id);
+
+        // Delete the user
+        $user->delete();
+
+        // Redirect or return a response
+        return redirect()->route('index')->with('success', 'User deleted successfully');
     }
 }
