@@ -69,7 +69,7 @@ class AdminUserController extends Controller
         $user->save();
 
         // Redirect or return a response
-        return redirect()->route('  index')->with('success', 'User updated successfully');
+        return redirect('/showUser')->with('success', 'User updated successfully');
     }
 
 

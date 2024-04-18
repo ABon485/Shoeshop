@@ -84,7 +84,7 @@ Route::get('/search', [ProductController::class, 'search'])->name('search');
 
 // show home admin
 Route::get('/admin',[AdminOrderController::class,'index'])->name('home');
-
+Route::get('/admin/logout/out',[AuthController::class,'logoutAdmin'])->name('logout.admin');
 // show page Order
 Route::get('/showOrder',[AdminOrderController::class,'showOrder'])->name('showOrder');
 
@@ -98,7 +98,8 @@ Route::get('/editProduct',[AdminProductController::class,'edit'])->name('editPro
 Route::get('/deleteProduct',[AdminProductController::class,'delete'])->name('deleteProduct');
 
 Route::get('/showUser',[AdminUserController::class,'index'])->name('index');
-Route::get('/edit',[AdminUserController::class,'edit'])->name('edit');
+Route::get('/edit/{id}',[AdminUserController::class,'edit'])->name('edit');
+Route::post('/edit/{id}',[AdminUserController::class,'update'])->name('update');
 Route::get('/destroy/{id}',[AdminUserController::class,'destroy'])->name('destroy');
 Route::get('/showUser/{id}',[AdminUserController::class,'show'])->name('show');
 

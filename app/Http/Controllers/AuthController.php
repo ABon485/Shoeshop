@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\User;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Validator;
 
 
@@ -54,7 +55,16 @@ class AuthController extends Controller
 
     function postLogin(Request $request)
     {
+        $users = User::all();
+
+        // In thông tin của từng user
+        
         if (Auth::attempt(['email' => $request->email, 'password' => $request->password])) {
+            foreach ($users as $user) {
+                if($user->role == "1" && $request->email == $user->email){
+                    return redirect("/admin");
+                }
+            }
             return redirect("/");
         }
 
@@ -65,5 +75,11 @@ class AuthController extends Controller
 
         Auth::logout();
         return redirect('/');
+    }
+
+    function logoutAdmin()
+    {
+        Session::forget('admin');
+        return redirect('/login');
     }
 }

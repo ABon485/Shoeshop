@@ -1,10 +1,11 @@
 @extends('admin.layouts')
 
 @section('content')
+
     <h2>Show User</h2>
 
     <div class="pull-right">
-        <a class="btn btn-success" href="">Back</a>
+        <a class="btn btn-success" href="{{route('home')}}">Back</a>
     </div>
 
     <table class="table table-striped">
