@@ -1,74 +1,99 @@
 @extends('admin.layouts')
 @section('content')
 
-<div class="row">
-    <div class="col-lg-12" margin-tb>
-        <div class="pull-left">
+
+    <div class="row" margin-tb>
+        <div class="pull-left col-5">
+        </div>
+        <div class="pull-left col-4 mt-5">
             <h2> Add new Product </h2>
         </div>
-        <div class="pull-right">
-            <a class="btn btn-success" href="{{route('homeAdmin')}}">Back</a>
-        </div>
-    </div>
-</div>
-
-@if ($errors -> any())
-<div class="alert alert-danger">
-    <strong>Whoops!</strong> There are some problems <br><br>
-    <ul>
-        @foreach($errors->all() as $error)
-        <li>{{$error}}</li>
-        @endforeach
-    </ul>
-</div>
-@endif
-
-<form action="">
-    {{--  ví dụ action= "{{route('admin.store')}}" --}}
-    @csrf
-    <div class="row">
-        <div class="col-xs-12 col-sm-12 col-md-12">
-            <div class="form-group">
-                <strong>Name</strong>
-                <input type="text" name="name" class="form-control" placeholder="Name">
-            </div>
-        </div>
-        <div class="col-xs-12 col-sm-12 col-md-12">
-            <div class="form-group">
-                <strong>Description</strong>
-                <textarea name="description" class="form-control" placeholder="Description" style="height: 150px"> </textarea>
-            </div>
-        </div>
-        <div class="col-xs-12 col-sm-12 col-md-12">
-            <div class="form-group">
-                <strong>Price</strong>
-                <input type="text" name="price" class="form-control" placeholder="Price">
-            </div>
-        </div>
-        <div class="col-xs-12 col-sm-12 col-md-12">
-            <div class="form-group">
-                <strong>Size</strong>
-                <input type="text" name="size" class="form-control" placeholder="Size">
-            </div>
-        </div>
-        <div class="col-xs-12 col-sm-12 col-md-12">
-            <div class="form-group">
-                <strong>Quantity</strong>
-                <input type="text" name="quantity" class="form-control" placeholder="Quantity">
-            </div>
-        </div>
-        <div class="col-xs-12 col-sm-12 col-md-12">
-            <div class="form-group">
-                <strong>Image</strong>
-                <input type="file" name="image" class="form-control" placeholder="Image">
-            </div>
-        </div>
-        <div class="col-xs-12 col-sm-12 col-md-12">
-            <button type="submit" class="btn btn-primary">Submit</button>
+        <div class="pull-left col-2">
         </div>
     </div>
 
-</form>
+
+<div class="container">
+    <div class="pull-left col-4">
+    </div>
+    <div class="pull-left col-5">
+        <form action="{{route('Product.store') }}" method="POST" class="py-5 ml-5" enctype="multipart/form-data">
+            @csrf
+            <div class="form-group">
+                <label for="name" >Name</label>
+                <input type="text" class="form-control" id="name" name="name" value="{{ old('name') }}">
+                @error('name')
+                    <div class="invalid-feedback">{{ $message }}</div>
+                @enderror
+            </div>
+        
+            <div class="form-group">
+                <label for="description" >Description</label>
+                <input type="text" class="form-control " id="description" name="description" value="{{ old('description') }}">
+                @error('description')
+                    <div class="invalid-feedback">{{ $message }}</div>
+                @enderror
+            </div>
+        
+            <div class="form-group">
+                <label for="price" >Price</label>
+                <input type="text" class="form-control" id="price" name="price" value="{{ old('price') }}">
+                @error('price')
+                    <div class="invalid-feedback">{{ $message }}</div>
+                @enderror
+            </div>
+     
+            <div class="form-group">
+                <label for="promotion_price" >promotion_price</label>
+                <input type="text" class="form-control" id="promotion_price" name="promotion_price" value="{{ old('promotion_price') }}">
+                @error('promotion_price')
+                    <div class="invalid-feedback">{{ $message }}</div>
+                @enderror
+            </div>
+    
+            <div class="form-group">
+                <label for="size" >Size</label>
+                <input type="text" class="form-control " id="size" name="size" value="{{ old('size') }}">
+                @error('size')
+                    <div class="invalid-feedback">{{ $message }}</div>
+                @enderror
+            </div>
+    
+            <div class="form-group">
+                <label for="quantity" >Quantity</label>
+                <input type="text" class="form-control " id="quantity" name="quantity" value="{{ old('quantity') }}">
+                @error('quantity')
+                    <div class="invalid-feedback">{{ $message }}</div>
+                @enderror
+            </div>
+    
+            <div class="form-group">
+                <strong>Category</strong>
+                <select name="category" class="form-control">
+                    <option value="men">Men</option>
+                    <option value="women">Women</option>
+                </select>
+            </div>
+    
+            <div class="form-group">
+                <label for="image" >Image</label>
+                <input type="file" class="form-control-file " id="image" name="image">
+                <img id="preview" style="display: none; max-width: 200px; max-height: 200px;" />
+                @error('image')
+                    <div class="invalid-feedback">{{ $message }}</div>
+                @enderror
+            </div>
+        
+            <div class="form-group">
+                <input type="submit" name="submit"  class="btn btn-primary">
+            </div>
+        </form>
+    </div>
+    <div class="pull-left col-3">
+    </div>
+</div>
+
+
 @endsection
 
 

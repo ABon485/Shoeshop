@@ -31,11 +31,11 @@ class AdminOrderController extends Controller
         foreach ($data as $index => $item) {
             $qty = $item['qty'];
             $nameProduct = $item['item']->name;
-            dd($nameProduct);
+
         }
         $amount = $_GET['amount'];
         $message = $_GET['message'];
-
+        
         if ($message == "Successful.") {
             orderedModel::create([
                 'quantity' => $qty,
@@ -50,7 +50,7 @@ class AdminOrderController extends Controller
             return view('clients.webpage.successfulOrder');
         }
     }
-    public function showOrder()
+   public function showOrder()
     {
         $allData = orderedModel::all();
         $items = [];
@@ -68,7 +68,7 @@ class AdminOrderController extends Controller
         }
         // dd($items);
         // return view('admin.order.show');
-        return view('admin.order.show', ['items' => $items]);
+        return view('admin.order.show', ['items' => $allData]);
     }
 
     /**

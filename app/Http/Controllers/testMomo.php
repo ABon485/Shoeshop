@@ -2,10 +2,21 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Product;
 use Illuminate\Http\Request;
 
 class testMomo extends Controller
 {
+
+    function formCheckout(Request $request){
+        $qty = $request->input('qty');
+        $productId = $request->input('productId');
+        $prod = Product::find($productId);
+        $price = $request->input('price');
+        $total = $price * $qty;
+        return view('clients.webpage.checkout',
+        ['total'=>$total, 'prod'=>$prod, 'qty'=>$qty]);
+    }
 
     public function execPostRequest($url, $data)
     {
@@ -31,13 +42,13 @@ class testMomo extends Controller
     }
     public function payment(Request $request)
     {
-        dd($request);
+        // dd($request);
         $endpoint = "https://test-payment.momo.vn/v2/gateway/api/create";
         $partnerCode = 'MOMOBKUN20180529';
         $accessKey = "klm05TvNBzhg7h7j";
         $secretKey = 'at67qH6mk8w5Y1nAyMoYKMWACiEi2bsa';
 
-        $orderInfo = 'Nhi'; //Info
+        $orderInfo = 'Customer'; //Info
         $amount = $request->price; //Price Total
         $orderId = time() . mt_rand(1000, 9999);
         $redirectUrl = "http://127.0.0.1:8000/ordered";

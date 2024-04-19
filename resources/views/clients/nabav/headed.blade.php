@@ -46,7 +46,7 @@
                 <img class="" src="{{ asset('/images/Group 550.png') }}" alt="">
             </div>
             <div class="title_menu">
-                <a class="p-3" href="{{ route('home') }}">Home</a>
+                <a class="p-3" href="{{ route('homepage') }}">Home</a>
                 <a class="p-3" href="{{ route('product') }}">Product</a>
                 <a class="p-3" href="{{ route('contact') }}">Contact</a>
             </div>

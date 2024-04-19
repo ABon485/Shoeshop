@@ -80,6 +80,6 @@ class AuthController extends Controller
     function logoutAdmin()
     {   
         Auth::logout();
-        return redirect('/login');
+        return redirect('/');
     }
 }

@@ -36,7 +36,7 @@
     </div>
 
     <div class="trending">
-        <h4>Trending Now</h4>
+        <h3 class="pl-lg-5">Trending Now</h3>
         <div class="overflow-auto">
             <!-- Slider1 -->
             <div id="mySwiper" class="pb-1">
@@ -82,10 +82,45 @@
             </div>
         </div>
     </div>
+
+    <div id="trending" class="trending">
+        <h3 class="pl-lg-5">Promotional Products</h3>
+        <div class="overflow-auto">
+            <!-- Slider1 -->
+            <div id="mySwiper" class="pb-1">
+                <div class="row">
+                    @php $count = 0; @endphp
+                    @foreach ($products as $product)
+                        @if ($count < 8)
+                            <div class="col-6 col-md-4 col-lg-3 mb-5">
+                                <a class="product-item text-decoration-none" href="{{ route('Detailproduct', ['id' => $product->id]) }}">
+                                    <img src="{{ asset('images/' . $product->image) }}" class="img-fluid product-thumbnail m-lg-4 ml-6">
+                                    <h3 class="product-title m-lg-4">{{ $product->name }}</h3>
+                                    <div class="price-box m-lg-4">
+                                        Price:
+                                        @if ($product->promotion_price != 0)
+                                            <span class="flash-del m-lg-4" style="text-decoration: line-through; color: red;">{{ number_format($product->price, 0, '.', ',') }} VND</span>
+                                            <span class="flash-sale">{{ number_format($product->promotion_price, 0, '.', ',') }} VND</span>
+                                        @else
+                                            <span>{{ number_format($product->price, 0, '.', ',') }} VND</span>
+                                        @endif
+                                    </div>
+                                </a>
+                            </div>
+                            @php $count++; @endphp
+                            @if ($count % 4 == 0)
+                                <div class="w-100"></div>
+                            @endif
+                        @endif
+                    @endforeach 
+                </div>
+            </div>
+        </div>
+    </div>
     <div class="row">
         <div class="row text-center">
             <div class="d-flex " style="padding-left: 350px">
-                <h4>We provide the best customer experiences</h4>
+                <h3>We provide the best customer experiences</h3>
             </div>
         </div>
 

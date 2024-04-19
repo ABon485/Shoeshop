@@ -27,7 +27,6 @@ class ProductController extends Controller
     public function getproduct(){
         
         $products = product::all();
-        // $this->data['title'] = 'sản phẩm';
         return view('clients.webpage.product',compact('products'));
     }
     public function Detailproduct($id){
@@ -37,7 +36,6 @@ class ProductController extends Controller
     public function show($id)
     {
         $product = Product::find($id);
-        // Các xử lý khác với biến $product
         return view('clients.webpage.detail', compact('product'));
     }
     public function favorite($product_id)

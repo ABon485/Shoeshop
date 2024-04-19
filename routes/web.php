@@ -41,7 +41,7 @@ Route::post('/AdminLogin', [AuthController::class,'AdminLogin'])->name('AdminLog
 
 Route::get('/search', [ProductController::class, 'search'])->name('search');
 
-Route::get('/',[ProductController::class,'index'])->name('home');
+Route::get('/',[ProductController::class,'index'])->name('homepage');
 
 Route::get('/product',[ProductController::class,'getproduct'])->name('product');
 
@@ -55,13 +55,18 @@ Route::get('/get-cart',[CartController::class,'getCart'])->name('cart-page');
 Route::get('/delete-cart/{id}', [CartController::class, 'deleteCart'])->name('delete-cart');
 Route::post('update-to-cart', [CartController::class, 'updateToCart'])->name('update-to-cart');
 
+
+// Checkout 
+Route::get('payUrl',[testMomo::class,'formCheckout'])-> name('checkout-momo');
+
 // Hiển thị form confirm Checkout
 Route::get('/checkout', [CartController::class, 'getDataAndRenderView'])->name('checkout');
 
 // Checkout-momo
-Route::get('payUrl',function(){
-    return view('clients.webpage.checkout');
-})-> name('checkout-momo');
+// Route::get('payUrl',function(){
+//     return view('clients.webpage.checkout');
+// })-> name('checkout-momo');
+
 
 Route::post('/payUrl', [testMomo::class,'payment']);
 
@@ -78,29 +83,30 @@ Route::get('/favorite',[FavoriteController::class,'favorite'])->name('favorite')
 Route::delete('/favorites/{id}', [FavoriteController::class,'destroy'])->name('favorites.destroy');
 
 //=================Route Admin====================
-
 // show home admin
-Route::get('/admin',[AdminUserController::class,'index'])->name('home');
-Route::get('/admin/logout/out',[AuthController::class,'logoutAdmin'])->name('logout.admin');
+
+
+
 Route::get('/admin',[AdminOrderController::class,'index'])->name('homeAdmin');
-
-
 // show page Order
 Route::get('/showOrder',[AdminOrderController::class,'showOrder'])->name('showOrder');
 // Manage Order
 Route::get('/ordered',[AdminOrderController::class,'ordered']);
-
-
-// show page User
-
 // show page Product
-Route::get('/showProduct',[AdminProductController::class,'showProduct'])->name('showProduct');
+Route::get('/showProduct',[AdminProductController::class,'index'])->name('showProduct');
 // show page form create product
 Route::get('/createProduct',[AdminProductController::class,'create'])->name('createProduct');
+
+Route::post('/createProduct',[AdminProductController::class,'store'])->name('Product.store');
+
 // show page form edit product
-Route::get('/editProduct',[AdminProductController::class,'edit'])->name('editProduct');
+Route::get('/Product/{id}/edit',[AdminProductController::class,'edit'])->name('editProduct');
+
+Route::put('/Product/{id}/update', [AdminProductController::class, 'update'])->name('updateProduct');
+
 // show page form delete product
-Route::get('/deleteProduct',[AdminProductController::class,'delete'])->name('deleteProduct');
+Route::get('/delete/{id}',[AdminProductController::class,'destroy'])->name('deleteProduct');
+Route::get('/admin',[AdminUserController::class,'index'])->name('home');
 
 Route::get('/showUser',[AdminUserController::class,'showUser'])->name('index');
 Route::get('/edit/{id}',[AdminUserController::class,'edit'])->name('edit');
@@ -108,6 +114,5 @@ Route::post('/edit/{id}',[AdminUserController::class,'update'])->name('update');
 Route::get('/destroy/{id}',[AdminUserController::class,'destroy'])->name('destroy');
 Route::get('/showUser/{id}',[AdminUserController::class,'show'])->name('show');
 
-
-
-
+// logout Admin
+Route::get('/admin/logout/out',[AuthController::class,'logoutAdmin'])->name('logout.admin');

@@ -147,7 +147,7 @@
     <div class="mainscreen">
         <div class="card">
             <div class="leftside">
-                <img src="https://i.pinimg.com/originals/18/9d/dc/189ddc1221d9c1c779dda4ad37a35fa1.png" class="product"
+                <img src="{{ asset('images/' . $prod->image) }}" class="product"
                     alt="Shoes" />
             </div>
             <div class="rightside">
@@ -155,20 +155,18 @@
                     @csrf
                     <h1>CheckOut</h1>
                     <h2>Payment Information</h2>
-                    @foreach ($items as $item)
-                    <p>Name product: <b>{{ $item['item']->name }}</b></p>
-                    <p>Size product: <b>{{ $item['item']->size }}</b></p>
-                    <p>Quantity: <b>{{ $item['qty'] }}</b></p>
-                    <p>Image: 
-                        <img src="{{ asset('images/' . $item['item']->image) }}" alt="" style="width: 200px; height: 200px;">
+                    <p>Name product: <b>{{ $prod->name}}</b></p>
+                    <p>Size product: <b>{{ $prod->size}}</b></p>
+                    <p>Quantity: <b>{{ $qty }}</b></p>
+                    {{-- <p>Image: 
+                        <img src="{{ asset('images/' . $prod->image) }}" alt="" style="width: 200px; height: 200px;">
                     </p>
-                                        
+                                         --}}
                     <p>Total price: </p>
                     {{-- <b>{{ $item['price'] }}</b> --}}
-                    <input type="number" name="price" value="{{ $item['price'] }}">
+                    <input type="number" name="price" value="{{ $total}}">
                     
                     {{-- <input type="hidden" name="product_id[]" value="{{ $item['item']->id }}"> --}}
-                    @endforeach
                     <button class="submit" type="submit" name="payUrl" id="momo">Submit</button>
                 </form>
             </div>
