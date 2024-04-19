@@ -36,7 +36,7 @@ class AdminOrderController extends Controller
         }
         $amount = $_GET['amount'];
         $message = $_GET['message'];
-
+        
         if ($message == "Successful.") {
             orderedModel::create([
                 'quantity' => $qty,
@@ -71,7 +71,7 @@ class AdminOrderController extends Controller
         }
         // dd($items);
         // return view('admin.order.show');
-        return view('admin.order.show', ['items' => $items]);
+        return view('admin.order.show', ['items' => $allData]);
     }
 
     /**

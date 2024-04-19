@@ -1,31 +1,75 @@
 @extends('admin.layouts')
-@section('content')
-    <h2> DashBoard </h2>
-    <nav>
-        <ul>
-            <li><a href="{{route('home')}}">
-                    <i class="fas fa-home"></i>
-                    <span class="nav-item">Home</span>
-                </a></li>
-            <li><a href="{{ route('index') }}">
-                    <i class="fas fa-user"></i>
-                    <span class="nav-item">User</span>
-                </a></li>
-            <li><a href="{{ route('showOrder') }}">
-                    <i class="fas fa-wallet"></i>
-                    <span class="nav-item">Order</span>
-                </a></li>
-            <li><a href="{{ route('showProduct') }}">
-                    <i class="fas fa-chart-bar"></i>
-                    <span class="nav-item">Product</span>
-                </a></li>
-                <li><a href="{{ route('logout.admin') }}" class="logout">
-                    <i class="fas fa-sign-out-alt"></i>
-                    <span class="nav-item mt-5">Log out</span>
-                </a></li>
-        </ul>
-    </nav>
-    <div class="dashborad">
+@section('content') 
+<body>
+    <div class="container">
+        <div class="main-body">
+            <div class="history_lists">
+                <div class="list1">
+                    <div class="row">
+                        <h4>History</h4>
+                        <a href="#">See all</a>
+                    </div>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>#</th>
+                                <th>Dates</th>
+                                <th>Name</th>
+                                <th>Type</th>
+                                <th>Ammount</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>1</td>
+                                <td>2, Aug, 2022</td>
+                                <td>Sam Tonny</td>
+                                <td>Premimum</td>
+                                <td>$2000.00</td>
+                            </tr>
+                            <tr>
+                                <td>2</td>
+                                <td>29, July, 2022</td>
 
+                                <td>Code Info</td>
+                                <td>Silver</td>
+                                <td>$5,000.00</td>
+                            </tr>
+                            <tr>
+                                <td>3</td>
+                                <td>15, July, 2022</td>
+
+                                <td>Jhon David</td>
+                                <td>Startup</td>
+                                <td>$3000.00</td>
+                            </tr>
+                            <tr>
+                                <td>4</td>
+                                <td>5, July, 2022</td>
+                                <td>Salina Gomiz</td>
+                                <td>Premimum</td>
+                                <td>$7000.00</td>
+                            </tr>
+                            <tr>
+                                <td>5</td>
+                                <td>29, June, 2022</td>
+                                <td>Gomiz</td>
+                                <td>Gold</td>
+                                <td>$4000.00</td>
+                            </tr>
+                            <tr>
+                                <td>6</td>
+                                <td>28, June, 2022</td>
+                                <td>Elyana Jhon</td>
+                                <td>Premimum</td>
+                                <td>$2000.00</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
     </div>
-@endsection
+</body>
+@endsection 
+

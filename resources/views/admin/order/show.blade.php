@@ -11,7 +11,6 @@
         <tr>
             <th>ID</th>
             <th>Product Name</th>
-            <th>Quantity</th>
             <th>User_id</th>
             <th>Total price</th>
             <th>Status</th>
@@ -25,9 +24,6 @@
             </td>
             <td>
                 <p> {{ $item['productName'] }}</p>
-            </td>
-            <td>
-                <p> {{ $item['quantity'] }}</p>
             </td>
             <td>
                 <p> {{ $item['userID'] }}</p>

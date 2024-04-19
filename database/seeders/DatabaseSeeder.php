@@ -23,7 +23,7 @@ class DatabaseSeeder extends Seeder
         // ]);
             $product = new ProductFactory();
             for ($i=0; $i< 15; $i++){
-                DB::table('Shoe')->insert($product->definition());
+                DB::table('shoe')->insert($product->definition());
             }
     }
 }

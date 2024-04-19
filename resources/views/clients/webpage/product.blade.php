@@ -30,7 +30,7 @@
                                                 @else
                                                     <a title="yeu thich"
                                                         href="{{ route('webpage.favorite', $product->id) }}">
-                                                        <i id="icon" class=" heart2 fa fa-heart" style="font-size: 20px;" aria-hidden="true"></i></a>
+                                                        <i id="icon" class=" heart2 fa fa-heart" style="color: red; font-size: 20px;" aria-hidden="true"></i></a>
                                                 @endif
                                             </div>
                                         @endif
@@ -78,7 +78,7 @@
                                                 @else
                                                     <a title="yeu thich"
                                                         href="{{ route('webpage.favorite', $product->id) }}">
-                                                        <i id="icon" class=" heart2 fa fa-heart" style="font-size: 20px;" aria-hidden="true"></i></a>
+                                                        <i id="icon" class=" heart2 fa fa-heart" style=" color: red; font-size: 20px;" aria-hidden="true"></i></a>
                                                 @endif
                                             </div>
                                         @endif
